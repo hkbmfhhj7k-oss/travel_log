@@ -4,22 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f7f5">
-<title>旅ログ｜迷子ログ Ver.1.1</title>
+<title>旅ログ｜実地図＋迷子ログ Ver.1.2.1</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#233b38;background:#f4f7f5;-webkit-text-size-adjust:100%}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer;white-space:nowrap;min-height:44px;border:1px solid #c9d9d2;color:#23453c;background:#fff;border-radius:12px;padding:9px 13px;font-weight:600}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,.file-picker:focus-within{outline:3px solid #6aa8cf;outline-offset:2px}button.primary{color:white;background:#26745f;border-color:#26745f}button.danger{color:#a83e46}button.activated{border-color:#26745f;background:#e2f4ec;color:#145943}a{color:#216d67}main{max-width:800px;margin:0 auto;padding:16px 14px 66px}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;flex-wrap:wrap}h1{font-size:23px;letter-spacing:.02em;margin:0}h2{font-size:17px;margin:0 0 8px}p{line-height:1.55}small,.muted{color:#647b74}small{font-size:12px}.tiny{font-size:11px;color:#667a75}label{font-size:13px;font-weight:650;display:block;margin-bottom:5px}.stack{display:grid;gap:10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.panel{background:white;border:1px solid #e1e8e4;border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 8px #183e2e09}.intro{font-size:13px;color:#5e756e;margin:6px 0 0}.field{min-width:0;flex:1}.field-wide{min-width:180px;flex:2}.control{height:44px;width:100%;border-radius:10px;border:1px solid #c8d9d1;background:#fff;padding:10px;color:#253e37;min-width:0;font-size:16px}textarea.control{height:auto;min-height:85px;resize:vertical;line-height:1.5}.pill{border:1px solid #bad6c6;border-radius:99px;padding:5px 10px;background:#ebf7ef;color:#28634d;font-size:11px;font-weight:650}.tool-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.tool-row button{font-size:13px;padding:7px 4px;min-height:52px;line-height:1.3;white-space:normal;overflow-wrap:anywhere;min-width:0}.editor{position:relative;height:clamp(300px,59vw,540px);background:#e5ece7;border:1px solid #b6cfc1;border-radius:13px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}.editor canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none}.editor-badge{position:absolute;z-index:1;top:10px;left:10px;max-width:calc(100% - 20px);padding:7px 10px;background:#fffef3ee;border-radius:9px;box-shadow:0 1px 4px #0001;font-size:12px;font-weight:650;pointer-events:none}.editor-footer{position:absolute;z-index:1;bottom:8px;right:9px;padding:5px 8px;background:#fffef3de;border-radius:8px;color:#436157;font-size:11px;pointer-events:none}.hint{padding:9px 11px;border-radius:10px;background:#edf6f0;color:#3e6251;font-size:12px;line-height:1.65;margin:8px 0}.notice{margin:8px 0 0;color:#4b6a61;font-size:12px;line-height:1.6}.stats{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0;color:#4b6e62;font-size:12px}.stats b{font-size:14px;color:#245443}.file-picker{display:inline-flex;align-items:center;justify-content:center;background:white;border:1px solid #c9d9d2;border-radius:11px;padding:9px 13px;min-height:44px;font-size:13px;font-weight:650;cursor:pointer;position:relative}.file-picker input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.spacer{flex:1}.status{min-height:35px;border-radius:9px;background:#eff6f1;padding:9px 11px;color:#285848;font-size:12px;line-height:1.55;margin-top:10px}.status.error{background:#fff0e8;color:#994a38}.divider{border:0;border-top:1px solid #e5ede7;margin:14px 0}.subtitle{font-size:13px;color:#57776c;margin:4px 0 10px}.image-note{font-size:12px;color:#617970;line-height:1.6}.blueprint{border-radius:11px;padding:12px;background:#f1f7f7;color:#516c68;font-size:12px}.kbd{background:#e5eee7;padding:2px 6px;border-radius:5px;font-size:11px}.hide{display:none!important}
 @media(max-width:420px){main{padding:13px 10px 50px}.panel{padding:12px}.row.compact button{flex:0 0 auto}.field{flex:1 1 100%}.field-wide{flex:1 1 100%}h1{font-size:20px}.tool-row button{font-size:12px}button{padding:9px 10px}.editor{height:clamp(315px,98vw,480px)}}
+
+/* Real map integration, v1.2 */
+.view-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 12px}.view-tabs button{min-width:0;white-space:normal}.view-tabs button[aria-selected="true"]{border-color:#26745f;background:#26745f;color:white}
+.map-container{height:clamp(315px,66vw,520px);border-radius:13px;position:relative;overflow:hidden;background:#e6ebe5;border:1px solid #c4d5cc}.map-gl{position:absolute;inset:0}.map-overlay{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;z-index:5}.map-badge{position:absolute;z-index:7;pointer-events:none;top:9px;left:9px;right:54px;max-width:max-content;background:#fffef2ed;border-radius:9px;font-size:12px;padding:6px 9px;box-shadow:0 1px 5px #0001}.map-note{font-size:12px;color:#536c62;line-height:1.6}.map-error{position:absolute;z-index:8;top:43px;left:10px;right:10px;padding:11px;background:#fff8eeef;border-radius:9px;color:#92512c;font-size:13px;display:none}.map-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.map-tools button{font-size:12px;padding:7px 4px;white-space:normal;min-height:51px;line-height:1.3;min-width:0}.map-stats{font-size:12px;color:#547368}.map-playback{border-top:1px solid #e8efea;margin-top:12px;padding-top:10px}.map-playback input{width:100%;accent-color:#26745f}.map-attribution{color:#62786f;font-size:11px;line-height:1.5}.map-placeholder{padding:18px;text-align:center;color:#60776e;font-size:13px;position:absolute;inset:0;display:grid;place-items:center}.map-container .maplibregl-ctrl-bottom-right,.map-container .maplibregl-ctrl-bottom-left{z-index:4}.map-container .maplibregl-control-container{z-index:9;position:relative}
+@media(max-width:420px){.map-container{height:clamp(315px,99vw,480px)}.map-tools button{font-size:11px}.map-panel{padding:12px}}
 </style>
 </head>
 <body>
 <main>
-<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.1 迷子ログ</span></h1><p class="intro">AGFに向けた会場図・手描きルートの試験版</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
+<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.2.1 迷子ログ</span></h1><p class="intro">実地図にも会場図にも、指で歩いた道を描けます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
 <div class="panel stack">
   <div class="row between"><h2>旅を選ぶ</h2><button id="new-trip">＋ 新しい旅</button></div>
   <select id="trip-select" class="control" aria-label="旅の切り替え"><option>読み込み中…</option></select>
   <div class="row"><div class="field field-wide"><label for="trip-title">旅の名前</label><input id="trip-title" class="control" placeholder="例：AGF2026 迷子ログ" maxlength="150"></div><div class="field"><label for="trip-date">日付（だいたいでもOK）</label><input id="trip-date" class="control" placeholder="2026年11月頃" maxlength="80"></div></div>
 </div>
-<div class="panel">
+<div class="view-tabs" role="tablist" aria-label="経路を描く地図">
+  <button id="tab-real" role="tab" aria-selected="true" aria-controls="map-panel">実地図で描く</button>
+  <button id="tab-venue" role="tab" aria-selected="false" aria-controls="venue-panel">会場図で描く</button>
+</div>
+<section id="map-panel" class="panel map-panel" role="tabpanel" aria-labelledby="tab-real">
+  <div class="row between"><h2>実地図と歩いた経路</h2><span id="geo-zoom" class="tiny">地図を準備中</span></div>
+  <p class="subtitle">池袋周辺から始まります。地図を動かして目的地へ移動できます。</p>
+  <div class="map-tools" aria-label="実地図の編集モード">
+   <button id="geo-draw" class="activated" aria-pressed="true">✎ 線を描く</button>
+   <button id="geo-tap" aria-pressed="false">＋ 点を置く</button>
+   <button id="geo-pan" aria-pressed="false">✥ 地図を動かす</button>
+   <button id="geo-erase" aria-pressed="false">⌫ 線を消す</button>
+  </div>
+  <p class="hint" id="geo-hint">1本指で道路に沿って線を描けます。2本指で地図を動かし拡大できます。線は道路へ自動吸着しません。</p>
+  <div class="map-container" id="map-container">
+    <div class="map-gl" id="real-map"></div>
+    <div class="map-placeholder" id="map-placeholder">地図を読み込み中…</div>
+    <canvas id="geo-overlay" class="map-overlay" aria-label="実地図に経路を描くキャンバス"></canvas>
+    <div class="map-badge" id="geo-badge">0区間・0地点</div>
+    <div class="map-error" id="geo-error" role="alert"></div>
+  </div>
+  <p class="map-attribution">地図：OpenFreeMap / © OpenStreetMap contributors。地図の表示にはインターネット通信が必要です。描いた線と座標は端末内に保存し、自動送信しません。</p>
+  <div class="row" style="margin-top:9px"><button id="geo-zoom-out">−</button><button id="geo-zoom-in">＋</button><button id="geo-center">池袋へ</button><button id="geo-fit">経路全体</button><button id="geo-retry" style="display:none">地図を再読み込み</button><span class="map-stats" id="geo-count">0区間・0地点</span></div>
+  <div class="row" style="margin-top:9px"><button id="geo-next">↳ 次は別の区間</button><button id="geo-undo">↶ 戻す</button><button id="geo-redo">↷ やり直す</button><button id="geo-clear" class="danger">全経路を削除</button></div>
+  <div class="map-playback"><div class="row between"><b style="font-size:13px">描いた経路を再生</b><span id="geo-percent" class="tiny">0%</span></div><input id="geo-slider" type="range" min="0" max="1000" value="0" aria-label="経路再生位置"><div class="row"><button id="geo-play">▶ 再生</button><button id="geo-reset">↺ 最初から</button><select id="geo-speed" aria-label="再生速度"><option value="1">1倍</option><option value="3" selected>3倍</option><option value="8">8倍</option></select><a href="./demo.html" class="tiny">乗り物デモを見る</a></div></div>
+  <p class="notice" id="geo-status" role="status" aria-live="polite">地図上に線を描いてみてください。経路は旅ごとに保存します。</p>
+</section>
+<section id="venue-panel" class="panel" role="tabpanel" aria-labelledby="tab-venue" hidden style="display:none">
   <div class="row between"><h2>会場図と歩いた経路</h2><span id="zoom-label" class="tiny">100%</span></div>
   <div class="row" style="margin-bottom:10px"><label class="file-picker">＋ 会場図を読み込む<input id="image-file" type="file" accept="image/*"></label><button id="remove-image">画像を外す</button><span id="image-name" class="muted" style="font-size:12px;overflow-wrap:anywhere">会場図なしでも描けます</span></div>
   <div class="tool-row" role="group" aria-label="経路の編集モード">
@@ -34,16 +66,16 @@
   <div class="stats"><span>区間 <b id="segment-count">0</b></span><span>地点 <b id="point-count">0</b></span><span>※ 距離は未計測</span></div>
   <div class="row compact"><button id="new-segment">↳ 次は別の区間</button><button id="undo">↶ 戻す</button><button id="redo">↷ やり直す</button><button id="clear-routes" class="danger">経路を全消去</button></div>
   <p class="notice" id="segment-hint">続けて描いた線は、前の線の終点付近からなら自然につながります。遠い場所から描いたときは自動的に別の区間にします。</p>
-</div>
+</section>
 <div class="panel stack">
   <h2>思い出メモ</h2>
   <textarea id="trip-memo" class="control" placeholder="あのブースに戻ってしまった…"></textarea>
   <div class="row"><button class="primary" id="save-now">端末に保存</button><button id="export-trip">バックアップを書き出す</button><label class="file-picker">バックアップを読む<input id="import-file" type="file" accept=".json,application/json"></label></div>
-  <div class="row"><button id="delete-trip" class="danger">この旅を削除</button><span class="spacer"></span><a href="./demo.html">以前の実地図デモを見る</a></div>
+  <div class="row"><button id="delete-trip" class="danger">この旅を削除</button><span class="spacer"></span><a href="./demo.html">以前の乗り物再生デモを見る</a></div>
   <div class="status" id="status" role="status" aria-live="polite">準備中です…</div>
   <p class="image-note">旅データと画像は、通常はこの端末のブラウザ内に保存します。画像はJSONに埋め込まず別管理し、バックアップ時だけまとめます。Safariのデータを削除すると消える場合があるため、定期的にバックアップを書き出してください。</p>
 </div>
-<div class="blueprint"><b>今できること：</b>館内図の読み込み、フリーハンド描画、タップ追加、2本指拡大・移動、区間分け、線の削除、旅ごとの保存・復元、旧Ver.1.0データの引き継ぎ。<br><b>まだできないこと：</b>画面を閉じた間の自動GPS記録、GPSデータの取り込み、道路に沿う自動補正。実地図デモはネット通信を使います。</div>
+<div class="blueprint"><b>今できること：</b>実地図・館内図の切り替え、どちらにもフリーハンド描画、タップ追加、2本指拡大・移動、区間分け、線の削除、旅ごとの保存・復元、旧Ver.1.0データの引き継ぎ。<br><b>まだできないこと：</b>画面を閉じた間の自動GPS記録、GPSデータの取り込み、道路に沿う自動補正。実地図の表示にはネット通信を使います。</div>
 </main>
 <script>
 (()=>{'use strict';
@@ -64,8 +96,9 @@ async function put(store,value){if(!db){memoryStore[store].set(value.id,value);r
 async function get(store,id){if(!db)return memoryStore[store].get(id);const tx=db.transaction(store,'readonly');return request(tx,{store,kind:'get',args:[id]})}
 async function all(store){if(!db)return [...memoryStore[store].values()];const tx=db.transaction(store,'readonly');return request(tx,{store,kind:'getAll',args:[]})}
 async function remove(store,id){if(!db){memoryStore[store].delete(id);return}const tx=db.transaction(store,'readwrite');const done=txDone(tx);tx.objectStore(store).delete(id);await done}
-function freshTrip(name='AGF2026 迷子ログ'){const now=new Date().toISOString();return {version:2,id:uid(),title:name,dateText:'2026/11/7〜8',memo:'',segments:[],assetId:null,baseWidth:1000,baseHeight:750,createdAt:now,updatedAt:now}}
-function safeTrip(t){const out=freshTrip();out.id=typeof t.id==='string'?t.id:uid();out.title=String(t.title||'名前のない旅').slice(0,150);out.dateText=String(t.dateText||'').slice(0,80);out.memo=String(t.memo||'').slice(0,50000);out.createdAt=t.createdAt||new Date().toISOString();out.updatedAt=t.updatedAt||new Date().toISOString();out.assetId=typeof t.assetId==='string'?t.assetId:null;out.baseWidth=qs(+t.baseWidth||1000,100,20000);out.baseHeight=qs(+t.baseHeight||750,100,20000);out.segments=(Array.isArray(t.segments)?t.segments:[]).slice(0,10000).map(s=>({id:s.id||uid(),mode:'walk',source:s.source==='tap'?'tap':'hand',points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.x)&&Number.isFinite(+p.y)).map(p=>({x:qs(+p.x,0,1),y:qs(+p.y,0,1)}))})).filter(s=>s.points.length);return out}
+function freshTrip(name='AGF2026 迷子ログ'){const now=new Date().toISOString();return {version:2,id:uid(),title:name,dateText:'2026/11/7〜8',memo:'',segments:[],geoSegments:[],mapView:{center:[139.7146,35.7292],zoom:15.4},assetId:null,baseWidth:1000,baseHeight:750,createdAt:now,updatedAt:now}}
+function safeTrip(t){const out=freshTrip();out.id=typeof t.id==='string'?t.id:uid();out.title=String(t.title||'名前のない旅').slice(0,150);out.dateText=String(t.dateText||'').slice(0,80);out.memo=String(t.memo||'').slice(0,50000);out.createdAt=t.createdAt||new Date().toISOString();out.updatedAt=t.updatedAt||new Date().toISOString();out.assetId=typeof t.assetId==='string'?t.assetId:null;out.baseWidth=qs(+t.baseWidth||1000,100,20000);out.baseHeight=qs(+t.baseHeight||750,100,20000);out.segments=(Array.isArray(t.segments)?t.segments:[]).slice(0,10000).map(s=>({id:s.id||uid(),mode:'walk',source:s.source==='tap'?'tap':'hand',points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.x)&&Number.isFinite(+p.y)).map(p=>({x:qs(+p.x,0,1),y:qs(+p.y,0,1)}))})).filter(s=>s.points.length);out.geoSegments=(Array.isArray(t.geoSegments)?t.geoSegments:[]).slice(0,10000).map(s=>({id:typeof s.id==='string'?s.id:uid(),mode:'walk',source:s.source==='tap'?'tap':'hand',points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.lng)&&Number.isFinite(+p.lat)&&Math.abs(+p.lng)<=180&&Math.abs(+p.lat)<=85).map(p=>({lng:+p.lng,lat:+p.lat}))})).filter(s=>s.points.length);
+const v=t.mapView||{};out.mapView={center:Array.isArray(v.center)&&v.center.length===2&&Number.isFinite(+v.center[0])&&Number.isFinite(+v.center[1])&&Math.abs(+v.center[0])<=180&&Math.abs(+v.center[1])<=85?[+v.center[0],+v.center[1]]:[139.7146,35.7292],zoom:qs(Number.isFinite(+v.zoom)?+v.zoom:15.4,2,20)};return out}
 function saveSoon(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveCurrent(false),550)}
 async function saveCurrent(notify){if(!current)return;clearTimeout(saveTimer);saveTimer=0;current.updatedAt=new Date().toISOString();const saved=clone(current);try{await put('trips',saved);const ix=trips.findIndex(t=>t.id===saved.id);if(ix>=0)trips[ix]=saved;else trips.push(saved);trips.sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));fillTrips(saved.id);if(notify)status(persistent?'この端末に保存しました。':'この画面では一時保存のみです。必ずバックアップを書き出してください。',!persistent)}catch(e){status('端末への保存に失敗しました。バックアップを書き出してください：'+e.message,true)}}
 function fillTrips(id){const select=$('trip-select');select.replaceChildren();for(const t of trips){const op=document.createElement('option');op.value=t.id;op.textContent=t.title||'名前のない旅';select.append(op)}select.value=id||current?.id||''}
@@ -74,7 +107,7 @@ function snapshot(){if(!current)return;undoStack.push(clone(current.segments));i
 function updateHistory(){$('undo').disabled=undoStack.length===0;$('redo').disabled=redoStack.length===0;}
 function updateStats(){const parts=current?.segments||[];const count=parts.reduce((a,s)=>a+s.points.length,0);$('segment-count').textContent=parts.length;$('point-count').textContent=count;$('canvas-badge').textContent=count?parts.length+'区間・'+count+'地点':'まだ経路はありません';$('new-segment').classList.toggle('activated',forcedSeparate);updateHistory()}
 function touched(){updateStats();render();saveSoon()}
-async function loadTrip(id){clearTimeout(saveTimer);const t=trips.find(t=>t.id===id)||await get('trips',id);if(!t)return;current=safeTrip(t);forcedSeparate=false;undoStack=[];redoStack=[];reflectFields();await loadImage();fit();fillTrips(current.id);status('旅を読み込みました。編集内容は自動保存します。')}
+async function loadTrip(id){clearTimeout(saveTimer);const t=trips.find(t=>t.id===id)||await get('trips',id);if(!t)return;current=safeTrip(t);forcedSeparate=false;undoStack=[];redoStack=[];reflectFields();await loadImage();fit();fillTrips(current.id);window.TravelLogMap?.onTripChanged?.();status('旅を読み込みました。編集内容は自動保存します。')}
 function revokeUrl(){if(assetUrl){URL.revokeObjectURL(assetUrl);assetUrl=''}}
 async function loadImage(){revokeUrl();assetImage=null;assetBlob=null;assetName='';activeAssetId=current?.assetId||null;if(activeAssetId){try{const asset=await get('assets',activeAssetId);if(asset?.blob){assetBlob=asset.blob;assetName=asset.name||'会場図';assetUrl=URL.createObjectURL(assetBlob);const im=new Image();await new Promise((resolve,reject)=>{im.onload=resolve;im.onerror=reject;im.src=assetUrl});assetImage=im;current.baseWidth=im.naturalWidth;current.baseHeight=im.naturalHeight}else{activeAssetId=null;current.assetId=null;status('会場図の画像を読み込めませんでした。バックアップを確認してください。',true)}}catch(e){status('画像の読み込みに失敗しました：'+e.message,true)}}$('image-name').textContent=assetName||'会場図なしでも描けます';$('remove-image').disabled=!assetImage;render()}
 function base(){return {w:current?.baseWidth||1000,h:current?.baseHeight||750}}
@@ -121,7 +154,7 @@ $('redo').onclick=()=>{if(!redoStack.length)return;undoStack.push(clone(current.
 $('clear-routes').onclick=()=>{if(!current.segments.length)return;if(!confirm('この旅の経路をすべて削除しますか？（戻すで復元できます）'))return;snapshot();current.segments=[];forcedSeparate=false;touched()};
 for(const [field,key] of [['trip-title','title'],['trip-date','dateText'],['trip-memo','memo']])$(field).addEventListener('input',()=>{if(!current)return;current[key]=$(field).value;saveSoon()});
 $('new-trip').onclick=async()=>{await saveCurrent(false);const name=prompt('新しい旅の名前を入力してください','新しい旅');if(name===null)return;const t=freshTrip(name.trim()||'新しい旅');t.dateText='';await put('trips',t);trips.unshift(t);await loadTrip(t.id);status('新しい旅を作りました。')};
-$('trip-select').onchange=async()=>{await saveCurrent(false);await loadTrip($('trip-select').value)};
+$('trip-select').onchange=async(e)=>{const targetId=e.currentTarget.value;if(!targetId||targetId===current?.id)return;await saveCurrent(false);await loadTrip(targetId)};
 $('delete-trip').onclick=async()=>{if(!current)return;if(!confirm('「'+current.title+'」を削除しますか？この操作は戻せません。'))return;const del=current;clearTimeout(saveTimer);await remove('trips',del.id);if(del.assetId)await remove('assets',del.assetId);trips=trips.filter(t=>t.id!==del.id);if(!trips.length){const t=freshTrip();await put('trips',t);trips=[t]}await loadTrip(trips[0].id);status('旅を削除しました。')};
 $('remove-image').onclick=async()=>{if(!current?.assetId)return;if(!confirm('この旅の会場図画像を外しますか？（経路は残ります）'))return;const old=current.assetId;current.assetId=null;current.baseWidth=1000;current.baseHeight=750;await loadImage();fit();saveSoon();try{await remove('assets',old)}catch(_){ }status('画像だけ外しました。経路は残しています。')};
 $('image-file').onchange=async()=>{const f=$('image-file').files?.[0];$('image-file').value='';if(!f)return;if(!f.type.startsWith('image/')){status('画像ファイルを選択してください',true);return}if(f.size>MAX_IMAGE){status('画像が大きすぎます（35MB以内）。写真を小さくして読み込んでください。',true);return}const old=current?.assetId,id=uid();const asset={id,tripId:current.id,name:f.name,blob:f,type:f.type,createdAt:new Date().toISOString()};try{await put('assets',asset);current.assetId=id;await loadImage();if(!assetImage)throw Error('画像が開けません');fit();await saveCurrent(false);if(old)await remove('assets',old);status('会場図を読み込みました。線を引いて歩いた場所を記録できます。')}catch(e){current.assetId=old;await loadImage();status('画像の読み込み・保存に失敗しました：'+e.message,true)}};
@@ -144,8 +177,490 @@ await loadTrip(trips[0].id);
 if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('./sw.js').catch(()=>{})}}
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>render()).observe(editor);else window.addEventListener('resize',render);
 window.addEventListener('pagehide',()=>{if(current&&persistent&&saveTimer)saveCurrent(false)});
-setMode('draw');init().catch(e=>status('起動できませんでした：'+e.message,true));
+window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent};setMode('draw');init().catch(e=>status('起動できませんでした：'+e.message,true));
 })();
+</script>
+<script>
+/* Real-map geographic route editor */
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+  const rid = () => (globalThis.crypto?.randomUUID?.() || 'geo-' + Date.now() + '-' + Math.random().toString(36).slice(2));
+  const copy = x => JSON.parse(JSON.stringify(x));
+  const BR = () => window.TravelLogBridge;
+  const trip = () => BR()?.getTrip();
+  const segments = () => trip()?.geoSegments || [];
+  const geoStatus = (s, error = false) => { $('geo-status').textContent = s; $('geo-status').style.color = error ? '#a34535' : '#496b5d'; };
+  const centerDefault = [139.7146, 35.7292];
+  let map = null, isLoaded = false, loading = false, selected = 'real', mode = 'draw';
+  let pointers = new Map(), pending = null, gesture = null, movedMulti = false;
+  let forcedNew = false, undos = [], redos = [];
+  let playback = 0, playing = false, frame = null, previousFrame = null, playerMarker = null;
+  const overlay = $('geo-overlay');
+  const ctx = overlay.getContext('2d');
+  let overlayRatio = 1;
+
+  function counts() {
+    const n = segments().reduce((sum, s) => sum + s.points.length, 0);
+    const value = `${segments().length}区間・${n}地点`;
+    $('geo-badge').textContent = value;
+    $('geo-count').textContent = value;
+    $('geo-undo').disabled = !undos.length;
+    $('geo-redo').disabled = !redos.length;
+    $('geo-next').classList.toggle('activated', forcedNew);
+    $('geo-play').disabled = !segments().some(s => s.points.length >= 2);
+    $('geo-slider').disabled = $('geo-play').disabled;
+    $('geo-reset').disabled = $('geo-play').disabled;
+  }
+  function saveChanges() {
+    counts();
+    updateSources();
+    renderPending();
+    BR()?.changed();
+  }
+  function recordHistory() {
+    undos.push(copy(segments()));
+    if (undos.length > 70) undos.shift();
+    redos = [];
+  }
+  function setMode(next) {
+    mode = next;
+    pending = null;
+    pointers.clear();
+    gesture = null;
+    for (const id of ['draw', 'tap', 'pan', 'erase']) {
+      $('geo-' + id).classList.toggle('activated', id === next);
+      $('geo-' + id).setAttribute('aria-pressed', String(id === next));
+    }
+    overlay.style.pointerEvents = next === 'pan' ? 'none' : 'auto';
+    overlay.style.cursor = next === 'erase' ? 'not-allowed' : next === 'pan' ? 'grab' : 'crosshair';
+    $('geo-hint').textContent = {
+      draw: '1本指で地図の上をなぞって徒歩ルートを描きます。2本指で地図を移動・拡大できます。道路への自動吸着はしません。',
+      tap: '地点をタップして追加。近くの既存の線には途中挿入でき、遠い地点には勝手につながりません。',
+      pan: '1本指で地図を移動・2本指で拡大縮小できます。描画するときは「線を描く」に戻してください。',
+      erase: '消したい線の近くをタップすると、その区間を削除します。'
+    }[next];
+    renderPending();
+  }
+  function position(e) { const r = overlay.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+  function distance(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
+  function screenPoint(ll) { const p = map.project([ll.lng, ll.lat]); return { x: p.x, y: p.y }; }
+  function lngLat(p) { const v = map.unproject([p.x, p.y]); return { lng: v.lng, lat: v.lat }; }
+  function distanceSegment(p, a, b) {
+    const dx = b.x - a.x, dy = b.y - a.y, z = dx * dx + dy * dy;
+    if (!z) return distance(p, a);
+    const t = clamp(((p.x - a.x) * dx + (p.y - a.y) * dy) / z, 0, 1);
+    return distance(p, { x: a.x + dx * t, y: a.y + dy * t });
+  }
+  function simplify(pts, epsilon) {
+    if (pts.length <= 2) return pts;
+    const a = pts[0], b = pts.at(-1);
+    let max = 0, idx = -1;
+    for (let i = 1; i < pts.length - 1; i++) {
+      const d = distanceSegment(pts[i], a, b);
+      if (d > max) { idx = i; max = d; }
+    }
+    if (max > epsilon && idx >= 1) return [...simplify(pts.slice(0, idx + 1), epsilon).slice(0, -1), ...simplify(pts.slice(idx), epsilon)];
+    return [a, b];
+  }
+  function closestRoute(p) {
+    let best = { index: -1, edge: -1, distance: Infinity };
+    for (let i = 0; i < segments().length; i++) {
+      const pts = segments()[i].points;
+      for (let j = 0; j < pts.length; j++) {
+        const d = j === 0 ? distance(p, screenPoint(pts[j])) : distanceSegment(p, screenPoint(pts[j - 1]), screenPoint(pts[j]));
+        if (d < best.distance) best = { index: i, edge: j, distance: d };
+      }
+    }
+    return best;
+  }
+  function appendStroke(pts, source) {
+    if (!pts.length) return;
+    const s = segments().at(-1);
+    const near = s?.points?.length && distance(screenPoint(s.points.at(-1)), screenPoint(pts[0])) < 32;
+    const join = near && !forcedNew && s.source === source;
+    recordHistory();
+    if (join) s.points.push(...pts.slice(1));
+    else segments().push({ id: rid(), mode: 'walk', source, points: pts });
+    forcedNew = false;
+    saveChanges();
+    geoStatus('実地図の経路を記録しました。端末内に自動保存します。');
+  }
+  function placeTap(p) {
+    const point = lngLat(p), hit = closestRoute(p);
+    recordHistory();
+    if (!forcedNew && hit.distance < 20 && hit.index >= 0 && segments()[hit.index].points.length > 1) {
+      // Insert into the closest edge, never at the end of an unrelated line.
+      segments()[hit.index].points.splice(Math.max(1, hit.edge), 0, point);
+      geoStatus('近くの経路の途中に地点を挿入しました。');
+    } else {
+      const s = segments().at(-1);
+      if (!forcedNew && s?.source === 'tap' && s.points.length && distance(screenPoint(s.points.at(-1)), p) < 55) {
+        s.points.push(point);
+      } else {
+        segments().push({ id: rid(), mode: 'walk', source: 'tap', points: [point] });
+      }
+      geoStatus('地点を追加しました。離れた地点には勝手につながりません。');
+    }
+    forcedNew = false;
+    saveChanges();
+  }
+  function pointerDown(e) {
+    if (!isLoaded || !trip() || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    e.preventDefault();
+    try { overlay.setPointerCapture(e.pointerId); } catch (_) {}
+    const p = position(e);
+    pointers.set(e.pointerId, p);
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      gesture = { mid, d: Math.max(1, distance(a, b)), zoom: map.getZoom(), center: map.getCenter().toArray(), anchor: map.unproject([mid.x, mid.y]) };
+      pending = null;
+      movedMulti = true;
+      renderPending();
+    } else if (pointers.size === 1 && mode === 'draw') {
+      movedMulti = false;
+      pending = { start: p, last: p, pixels: [p] };
+      renderPending();
+    }
+  }
+  function pointerMove(e) {
+    if (!pointers.has(e.pointerId) || !isLoaded) return;
+    e.preventDefault();
+    const p = position(e);
+    pointers.set(e.pointerId, p);
+    if (gesture && pointers.size >= 2) {
+      const [a, b] = [...pointers.values()];
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      const newZoom = clamp(gesture.zoom + Math.log2(Math.max(1, distance(a, b)) / gesture.d), 2, 20);
+      map.jumpTo({ center: gesture.center, zoom: newZoom });
+      const under = map.unproject([mid.x, mid.y]);
+      const center = map.getCenter();
+      map.jumpTo({ center: [center.lng + gesture.anchor.lng - under.lng, center.lat + gesture.anchor.lat - under.lat], zoom: newZoom });
+      renderPending();
+      return;
+    }
+    if (pending && mode === 'draw' && !movedMulti && distance(pending.last, p) > 2.6) {
+      pending.pixels.push(p);
+      pending.last = p;
+      if (pending.pixels.length > 3500) pending.pixels = simplify(pending.pixels, 1.3);
+      renderPending();
+    }
+  }
+  function pointerUp(e) {
+    if (!pointers.has(e.pointerId) || !isLoaded) return;
+    e.preventDefault();
+    const p = position(e);
+    pointers.delete(e.pointerId);
+    if (gesture) {
+      pending = null;
+      if (pointers.size < 2) gesture = null;
+      renderPending();
+      return;
+    }
+    if (pointers.size) return;
+    if (mode === 'draw' && pending && !movedMulti) {
+      const pixels = pending.pixels;
+      const start = pending.start;
+      pending = null;
+      if (distance(p, start) < 5 || pixels.length < 2) placeTap(p);
+      else appendStroke(simplify(pixels, 1.6).map(lngLat), 'hand');
+      renderPending();
+    } else if (mode === 'tap' && !movedMulti) placeTap(p);
+    else if (mode === 'erase' && !movedMulti) {
+      const hit = closestRoute(p);
+      if (hit.index >= 0 && hit.distance <= 19) {
+        recordHistory();
+        segments().splice(hit.index, 1);
+        saveChanges();
+        geoStatus('区間を削除しました。「戻す」で復元できます。');
+      } else geoStatus('消す線の近くをタップしてください。');
+    }
+    movedMulti = false;
+  }
+  function pointerCancel(e) {
+    pointers.delete(e.pointerId);
+    pending = null;
+    if (pointers.size < 2) gesture = null;
+    renderPending();
+  }
+  function renderPending() {
+    const box = $('map-container');
+    const w = box.clientWidth || 1, h = box.clientHeight || 1;
+    const dpr = Math.min(2.5, window.devicePixelRatio || 1);
+    if (overlay.width !== Math.round(w * dpr) || overlay.height !== Math.round(h * dpr) || overlayRatio !== dpr) {
+      overlay.width = Math.round(w * dpr);
+      overlay.height = Math.round(h * dpr);
+      overlay.style.width = w + 'px';
+      overlay.style.height = h + 'px';
+      overlayRatio = dpr;
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    if (!pending || !pending.pixels.length) return;
+    ctx.beginPath();
+    pending.pixels.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
+    ctx.strokeStyle = '#e58c34'; ctx.lineWidth = 4.5; ctx.stroke();
+  }
+  function featureCollection() {
+    return { type: 'FeatureCollection', features: segments().filter(s => s.points.length >= 2).map(s => ({
+      type: 'Feature', properties: { id: s.id },
+      geometry: { type: 'LineString', coordinates: s.points.map(p => [p.lng, p.lat]) }
+    })) };
+  }
+  function endpoints() {
+    return { type: 'FeatureCollection', features: segments().flatMap((s, i) => {
+      if (!s.points.length) return [];
+      const a = s.points[0], b = s.points.at(-1);
+      return [{ type: 'Feature', properties: { kind: i === 0 ? 'first' : 'start' }, geometry: { type: 'Point', coordinates: [a.lng, a.lat] } },
+        ...(s.points.length > 1 ? [{ type: 'Feature', properties: { kind: 'end' }, geometry: { type: 'Point', coordinates: [b.lng, b.lat] } }] : [])];
+    }) };
+  }
+  function updateSources() {
+    if (!isLoaded) return;
+    map.getSource('user-lines')?.setData(featureCollection());
+    map.getSource('user-points')?.setData(endpoints());
+    counts();
+    drawPlayback();
+  }
+  function onTripChanged() {
+    stopPlayback();
+    playback = 0;
+    pending = null;
+    forcedNew = false;
+    undos = []; redos = [];
+    counts();
+    if (map && isLoaded) {
+      const v = trip()?.mapView;
+      if (v?.center?.length === 2) map.jumpTo({ center: v.center, zoom: v.zoom });
+      updateSources();
+    }
+    geoStatus('この旅の実地図ルートを読み込みました。');
+  }
+  window.TravelLogMap = { onTripChanged };
+
+  function display(view) {
+    selected = view;
+    const real = view === 'real';
+    $('map-panel').hidden = !real;
+    $('map-panel').style.display = real ? '' : 'none';
+    $('venue-panel').hidden = real;
+    $('venue-panel').style.display = real ? 'none' : '';
+    $('tab-real').setAttribute('aria-selected', String(real));
+    $('tab-venue').setAttribute('aria-selected', String(!real));
+    if (real) {
+      ensureMap();
+      requestAnimationFrame(() => { map?.resize(); renderPending(); });
+    } else {
+      requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    }
+  }
+  $('tab-real').addEventListener('click', () => display('real'));
+  $('tab-venue').addEventListener('click', () => display('venue'));
+
+  function fail(message) {
+    loading = false;
+    $('geo-error').textContent = message;
+    $('geo-error').style.display = 'block';
+    $('geo-retry').style.display = '';
+    $('map-placeholder').textContent = '実地図を表示できません';
+    geoStatus(message, true);
+  }
+  function loadMapScript() {
+    if (window.maplibregl) return Promise.resolve();
+    if (!document.getElementById('maplibre-css-v12')) {
+      const stylesheet = document.createElement('link');
+      stylesheet.id = 'maplibre-css-v12';
+      stylesheet.rel = 'stylesheet';
+      stylesheet.href = 'https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css';
+      document.head.append(stylesheet);
+    }
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js';
+      s.onload = resolve;
+      s.onerror = () => reject(new Error('地図ライブラリの通信に失敗しました'));
+      document.head.append(s);
+    });
+  }
+  async function ensureMap() {
+    if (map || loading || selected !== 'real') return;
+    loading = true;
+    if (!navigator.onLine) {
+      fail('オフラインです。実地図を読み込むには一度ネット接続が必要です。会場図モードはオフラインでも編集できます。');
+      return;
+    }
+    try {
+      await loadMapScript();
+      if (!window.maplibregl) throw Error('地図ライブラリの起動に失敗しました');
+      const v = trip()?.mapView;
+      map = new maplibregl.Map({
+        container: 'real-map', style: 'https://tiles.openfreemap.org/styles/liberty',
+        center: v?.center || centerDefault, zoom: v?.zoom || 15.4,
+        attributionControl: true, maxZoom: 20
+      });
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+      map.on('load', () => {
+        loading = false; isLoaded = true;
+        $('map-placeholder').style.display = 'none';
+        $('geo-error').style.display = 'none';
+        $('geo-retry').style.display = 'none';
+        map.addSource('user-lines', { type: 'geojson', data: featureCollection() });
+        map.addLayer({ id: 'user-line-border', type: 'line', source: 'user-lines', paint: { 'line-color': '#fff', 'line-width': 8 } });
+        map.addLayer({ id: 'user-line-walk', type: 'line', source: 'user-lines', paint: { 'line-color': '#138660', 'line-width': 4, 'line-dasharray': [0.75, 1.5] } });
+        map.addSource('user-points', { type: 'geojson', data: endpoints() });
+        map.addLayer({ id: 'user-endpoints', type: 'circle', source: 'user-points', paint: { 'circle-radius': 5, 'circle-color': ['case', ['==', ['get', 'kind'], 'first'], '#e9943b', '#26745f'], 'circle-stroke-width': 2, 'circle-stroke-color': '#fff' } });
+        const player = document.createElement('div');
+        player.style.cssText = 'height:25px;width:25px;border-radius:50%;display:grid;place-items:center;border:3px solid white;background:#208260;color:white;box-shadow:0 2px 5px #0005;font-size:13px';
+        player.textContent = '●';
+        playerMarker = new maplibregl.Marker({ element: player, anchor: 'center' });
+        updateSources();
+        geoStatus('実地図を表示しました。描画した経路は旅ごとに自動保存します。');
+        renderPending();
+      });
+      map.on('move', () => { $('geo-zoom').textContent = 'ズーム ' + map.getZoom().toFixed(1); renderPending(); });
+      map.on('moveend', () => {
+        const t = trip();
+        if (t && isLoaded && selected === 'real') {
+          const c = map.getCenter();
+          t.mapView = { center: [c.lng, c.lat], zoom: map.getZoom() };
+          BR()?.changed();
+        }
+      });
+      map.on('error', e => {
+        if (!isLoaded) {
+          $('geo-error').textContent = '地図の読み込みに問題が発生しました。通信状態を確認してください。';
+          $('geo-error').style.display = 'block';
+          $('geo-retry').style.display = '';
+          geoStatus('地図を読み込めませんでした。会場図モードは使用できます。', true);
+        }
+      });
+    } catch (err) {
+      fail('実地図を表示できませんでした：' + String(err.message || err) + '。会場図モードは引き続き使えます。');
+    }
+  }
+  function segmentLengths() {
+    const out = [];
+    let total = 0;
+    for (const s of segments()) {
+      let len = 0;
+      const steps = [];
+      for (let i = 1; i < s.points.length; i++) {
+        const a = s.points[i - 1], b = s.points[i];
+        const dx = (b.lng - a.lng) * Math.cos((a.lat + b.lat) * Math.PI / 360);
+        const dy = b.lat - a.lat;
+        const d = Math.hypot(dx, dy);
+        steps.push(d); len += d;
+      }
+      out.push({ points: s.points, len, steps });
+      total += len;
+    }
+    return { out, total };
+  }
+  function drawPlayback() {
+    $('geo-percent').textContent = Math.round(playback * 100) + '%';
+    $('geo-slider').value = Math.round(playback * 1000);
+    $('geo-play').textContent = playing ? 'Ⅱ 一時停止' : '▶ 再生';
+    if (!isLoaded || !playerMarker) return;
+    const route = segmentLengths();
+    if (route.total <= 0) { playerMarker.remove(); return; }
+    let left = playback * route.total;
+    for (const seg of route.out) {
+      if (!seg.steps.length) continue;
+      if (left <= seg.len || seg === route.out.at(-1)) {
+        for (let i = 0; i < seg.steps.length; i++) {
+          const d = seg.steps[i], a = seg.points[i], b = seg.points[i + 1];
+          if (left <= d || i === seg.steps.length - 1) {
+            const t = d ? clamp(left / d, 0, 1) : 0;
+            playerMarker.setLngLat([a.lng + (b.lng - a.lng) * t, a.lat + (b.lat - a.lat) * t]).addTo(map);
+            return;
+          }
+          left -= d;
+        }
+      }
+      left -= seg.len;
+    }
+  }
+  function stopPlayback() {
+    playing = false;
+    previousFrame = null;
+    if (frame !== null) cancelAnimationFrame(frame);
+    frame = null;
+    drawPlayback();
+  }
+  function tick(time) {
+    if (!playing) return;
+    if (previousFrame !== null) playback = clamp(playback + (time - previousFrame) * Number($('geo-speed').value) / 16000, 0, 1);
+    previousFrame = time;
+    drawPlayback();
+    if (playback >= 1) stopPlayback();
+    else frame = requestAnimationFrame(tick);
+  }
+  $('geo-play').addEventListener('click', () => {
+    if (!isLoaded || !segments().some(s => s.points.length >= 2)) return;
+    if (playing) stopPlayback();
+    else { if (playback >= 1) playback = 0; playing = true; previousFrame = null; frame = requestAnimationFrame(tick); drawPlayback(); }
+  });
+  $('geo-reset').addEventListener('click', () => { stopPlayback(); playback = 0; drawPlayback(); });
+  $('geo-slider').addEventListener('input', () => { stopPlayback(); playback = Number($('geo-slider').value) / 1000; drawPlayback(); });
+  for (const id of ['draw', 'tap', 'pan', 'erase']) $('geo-' + id).addEventListener('click', () => setMode(id));
+  $('geo-next').addEventListener('click', () => { forcedNew = true; counts(); geoStatus('次に描く経路は、新しい区間になります。'); });
+  $('geo-undo').addEventListener('click', () => {
+    if (!undos.length) return;
+    redos.push(copy(segments()));
+    trip().geoSegments = undos.pop();
+    forcedNew = false;
+    saveChanges();
+  });
+  $('geo-redo').addEventListener('click', () => {
+    if (!redos.length) return;
+    undos.push(copy(segments()));
+    trip().geoSegments = redos.pop();
+    forcedNew = false;
+    saveChanges();
+  });
+  $('geo-clear').addEventListener('click', () => {
+    if (!segments().length || !confirm('実地図の経路だけをすべて消しますか？会場図の線は残ります。')) return;
+    recordHistory(); trip().geoSegments = []; forcedNew = false; stopPlayback(); playback = 0;
+    saveChanges(); geoStatus('実地図の経路だけを削除しました。');
+  });
+  $('geo-zoom-in').addEventListener('click', () => map?.zoomIn());
+  $('geo-zoom-out').addEventListener('click', () => map?.zoomOut());
+  $('geo-center').addEventListener('click', () => map?.flyTo({ center: centerDefault, zoom: 15.4 }));
+  $('geo-retry').addEventListener('click', () => {
+    if (isLoaded) return;
+    try { map?.remove(); } catch (_) {}
+    map = null; loading = false;
+    $('geo-error').style.display = 'none';
+    $('geo-retry').style.display = 'none';
+    $('map-placeholder').textContent = '地図を読み込み中…';
+    ensureMap();
+  });
+  $('geo-fit').addEventListener('click', () => {
+    if (!map || !isLoaded) return;
+    const pts = segments().flatMap(s => s.points);
+    if (!pts.length) { geoStatus('まだ実地図の経路がありません。'); return; }
+    if (pts.length === 1) map.flyTo({ center: [pts[0].lng, pts[0].lat], zoom: 17 });
+    else {
+      const b = new maplibregl.LngLatBounds();
+      pts.forEach(p => b.extend([p.lng, p.lat]));
+      if (b.getNorth() === b.getSouth() && b.getWest() === b.getEast()) map.flyTo({ center: b.getCenter(), zoom: 17 });
+      else map.fitBounds(b, { padding: 45, maxZoom: 18 });
+    }
+  });
+  overlay.addEventListener('pointerdown', pointerDown);
+  overlay.addEventListener('pointermove', pointerMove);
+  overlay.addEventListener('pointerup', pointerUp);
+  overlay.addEventListener('pointercancel', pointerCancel);
+  overlay.addEventListener('lostpointercapture', e => { if (pointers.has(e.pointerId)) pointerCancel(e); });
+  overlay.addEventListener('wheel', e => { if (map) { e.preventDefault(); map.zoomTo(clamp(map.getZoom() + (e.deltaY < 0 ? 0.5 : -0.5), 2, 20)); } }, { passive: false });
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(() => { map?.resize(); renderPending(); }).observe($('map-container'));
+  window.addEventListener('online', () => { if (!map && selected === 'real') ensureMap(); });
+  counts(); setMode('draw'); display('real');
+})();
+
 </script>
 </body>
 </html>
