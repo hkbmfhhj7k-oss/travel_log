@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f7f5">
-<title>旅ログ｜実地図＋迷子ログ Ver.1.2.1</title>
+<title>旅ログ｜実地図＋迷子ログ Ver.1.2.2 単体版</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#233b38;background:#f4f7f5;-webkit-text-size-adjust:100%}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer;white-space:nowrap;min-height:44px;border:1px solid #c9d9d2;color:#23453c;background:#fff;border-radius:12px;padding:9px 13px;font-weight:600}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,.file-picker:focus-within{outline:3px solid #6aa8cf;outline-offset:2px}button.primary{color:white;background:#26745f;border-color:#26745f}button.danger{color:#a83e46}button.activated{border-color:#26745f;background:#e2f4ec;color:#145943}a{color:#216d67}main{max-width:800px;margin:0 auto;padding:16px 14px 66px}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;flex-wrap:wrap}h1{font-size:23px;letter-spacing:.02em;margin:0}h2{font-size:17px;margin:0 0 8px}p{line-height:1.55}small,.muted{color:#647b74}small{font-size:12px}.tiny{font-size:11px;color:#667a75}label{font-size:13px;font-weight:650;display:block;margin-bottom:5px}.stack{display:grid;gap:10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.panel{background:white;border:1px solid #e1e8e4;border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 8px #183e2e09}.intro{font-size:13px;color:#5e756e;margin:6px 0 0}.field{min-width:0;flex:1}.field-wide{min-width:180px;flex:2}.control{height:44px;width:100%;border-radius:10px;border:1px solid #c8d9d1;background:#fff;padding:10px;color:#253e37;min-width:0;font-size:16px}textarea.control{height:auto;min-height:85px;resize:vertical;line-height:1.5}.pill{border:1px solid #bad6c6;border-radius:99px;padding:5px 10px;background:#ebf7ef;color:#28634d;font-size:11px;font-weight:650}.tool-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.tool-row button{font-size:13px;padding:7px 4px;min-height:52px;line-height:1.3;white-space:normal;overflow-wrap:anywhere;min-width:0}.editor{position:relative;height:clamp(300px,59vw,540px);background:#e5ece7;border:1px solid #b6cfc1;border-radius:13px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}.editor canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none}.editor-badge{position:absolute;z-index:1;top:10px;left:10px;max-width:calc(100% - 20px);padding:7px 10px;background:#fffef3ee;border-radius:9px;box-shadow:0 1px 4px #0001;font-size:12px;font-weight:650;pointer-events:none}.editor-footer{position:absolute;z-index:1;bottom:8px;right:9px;padding:5px 8px;background:#fffef3de;border-radius:8px;color:#436157;font-size:11px;pointer-events:none}.hint{padding:9px 11px;border-radius:10px;background:#edf6f0;color:#3e6251;font-size:12px;line-height:1.65;margin:8px 0}.notice{margin:8px 0 0;color:#4b6a61;font-size:12px;line-height:1.6}.stats{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0;color:#4b6e62;font-size:12px}.stats b{font-size:14px;color:#245443}.file-picker{display:inline-flex;align-items:center;justify-content:center;background:white;border:1px solid #c9d9d2;border-radius:11px;padding:9px 13px;min-height:44px;font-size:13px;font-weight:650;cursor:pointer;position:relative}.file-picker input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.spacer{flex:1}.status{min-height:35px;border-radius:9px;background:#eff6f1;padding:9px 11px;color:#285848;font-size:12px;line-height:1.55;margin-top:10px}.status.error{background:#fff0e8;color:#994a38}.divider{border:0;border-top:1px solid #e5ede7;margin:14px 0}.subtitle{font-size:13px;color:#57776c;margin:4px 0 10px}.image-note{font-size:12px;color:#617970;line-height:1.6}.blueprint{border-radius:11px;padding:12px;background:#f1f7f7;color:#516c68;font-size:12px}.kbd{background:#e5eee7;padding:2px 6px;border-radius:5px;font-size:11px}.hide{display:none!important}
@@ -12,13 +12,13 @@
 
 /* Real map integration, v1.2 */
 .view-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 12px}.view-tabs button{min-width:0;white-space:normal}.view-tabs button[aria-selected="true"]{border-color:#26745f;background:#26745f;color:white}
-.map-container{height:clamp(315px,66vw,520px);border-radius:13px;position:relative;overflow:hidden;background:#e6ebe5;border:1px solid #c4d5cc}.map-gl{position:absolute;inset:0}.map-overlay{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;z-index:5}.map-badge{position:absolute;z-index:7;pointer-events:none;top:9px;left:9px;right:54px;max-width:max-content;background:#fffef2ed;border-radius:9px;font-size:12px;padding:6px 9px;box-shadow:0 1px 5px #0001}.map-note{font-size:12px;color:#536c62;line-height:1.6}.map-error{position:absolute;z-index:8;top:43px;left:10px;right:10px;padding:11px;background:#fff8eeef;border-radius:9px;color:#92512c;font-size:13px;display:none}.map-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.map-tools button{font-size:12px;padding:7px 4px;white-space:normal;min-height:51px;line-height:1.3;min-width:0}.map-stats{font-size:12px;color:#547368}.map-playback{border-top:1px solid #e8efea;margin-top:12px;padding-top:10px}.map-playback input{width:100%;accent-color:#26745f}.map-attribution{color:#62786f;font-size:11px;line-height:1.5}.map-placeholder{padding:18px;text-align:center;color:#60776e;font-size:13px;position:absolute;inset:0;display:grid;place-items:center}.map-container .maplibregl-ctrl-bottom-right,.map-container .maplibregl-ctrl-bottom-left{z-index:4}.map-container .maplibregl-control-container{z-index:9;position:relative}
+.map-container{height:clamp(315px,66vw,520px);border-radius:13px;position:relative;overflow:hidden;background:#e6ebe5;border:1px solid #c4d5cc}.map-gl{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}.map-overlay{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;z-index:5}.map-badge{position:absolute;z-index:7;pointer-events:none;top:9px;left:9px;right:54px;max-width:max-content;background:#fffef2ed;border-radius:9px;font-size:12px;padding:6px 9px;box-shadow:0 1px 5px #0001}.map-note{font-size:12px;color:#536c62;line-height:1.6}.map-error{position:absolute;z-index:8;top:43px;left:10px;right:10px;padding:11px;background:#fff8eeef;border-radius:9px;color:#92512c;font-size:13px;display:none}.map-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.map-tools button{font-size:12px;padding:7px 4px;white-space:normal;min-height:51px;line-height:1.3;min-width:0}.map-stats{font-size:12px;color:#547368}.map-playback{border-top:1px solid #e8efea;margin-top:12px;padding-top:10px}.map-playback input{width:100%;accent-color:#26745f}.map-attribution{color:#62786f;font-size:11px;line-height:1.5}.map-placeholder{padding:18px;text-align:center;color:#60776e;font-size:13px;position:absolute;inset:0;display:grid;place-items:center}.map-container .maplibregl-ctrl-bottom-right,.map-container .maplibregl-ctrl-bottom-left{z-index:4}.map-container .maplibregl-control-container{z-index:9;position:relative}
 @media(max-width:420px){.map-container{height:clamp(315px,99vw,480px)}.map-tools button{font-size:11px}.map-panel{padding:12px}}
 </style>
 </head>
 <body>
 <main>
-<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.2.1 迷子ログ</span></h1><p class="intro">実地図にも会場図にも、指で歩いた道を描けます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
+<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.2.2 迷子ログ（単体版）</span></h1><p class="intro">実地図にも会場図にも、指で歩いた道を描けます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
 <div class="panel stack">
   <div class="row between"><h2>旅を選ぶ</h2><button id="new-trip">＋ 新しい旅</button></div>
   <select id="trip-select" class="control" aria-label="旅の切り替え"><option>読み込み中…</option></select>
@@ -40,12 +40,12 @@
   <p class="hint" id="geo-hint">1本指で道路に沿って線を描けます。2本指で地図を動かし拡大できます。線は道路へ自動吸着しません。</p>
   <div class="map-container" id="map-container">
     <div class="map-gl" id="real-map"></div>
-    <div class="map-placeholder" id="map-placeholder">地図を読み込み中…</div>
+    <div class="map-placeholder" id="map-placeholder">地図画像を読み込み中…</div>
     <canvas id="geo-overlay" class="map-overlay" aria-label="実地図に経路を描くキャンバス"></canvas>
     <div class="map-badge" id="geo-badge">0区間・0地点</div>
     <div class="map-error" id="geo-error" role="alert"></div>
   </div>
-  <p class="map-attribution">地図：OpenFreeMap / © OpenStreetMap contributors。地図の表示にはインターネット通信が必要です。描いた線と座標は端末内に保存し、自動送信しません。</p>
+  <p class="map-attribution">地図：© OpenStreetMap contributors（オンライン表示）。描いた経路は地図画像の読み込みに関係なく表示・保存し、自動送信しません。</p>
   <div class="row" style="margin-top:9px"><button id="geo-zoom-out">−</button><button id="geo-zoom-in">＋</button><button id="geo-center">池袋へ</button><button id="geo-fit">経路全体</button><button id="geo-retry" style="display:none">地図を再読み込み</button><span class="map-stats" id="geo-count">0区間・0地点</span></div>
   <div class="row" style="margin-top:9px"><button id="geo-next">↳ 次は別の区間</button><button id="geo-undo">↶ 戻す</button><button id="geo-redo">↷ やり直す</button><button id="geo-clear" class="danger">全経路を削除</button></div>
   <div class="map-playback"><div class="row between"><b style="font-size:13px">描いた経路を再生</b><span id="geo-percent" class="tiny">0%</span></div><input id="geo-slider" type="range" min="0" max="1000" value="0" aria-label="経路再生位置"><div class="row"><button id="geo-play">▶ 再生</button><button id="geo-reset">↺ 最初から</button><select id="geo-speed" aria-label="再生速度"><option value="1">1倍</option><option value="3" selected>3倍</option><option value="8">8倍</option></select><a href="./demo.html" class="tiny">乗り物デモを見る</a></div></div>
@@ -174,491 +174,456 @@ trips=(await all('trips')).map(safeTrip).sort((a,b)=>String(b.updatedAt).localeC
 if(trips.length===0){try{const legacy=localStorage.getItem(LEGACY_KEY);if(legacy){await importContent(JSON.parse(legacy),{migration:true});return}}catch(e){status('旧版データの自動引き継ぎができませんでした。旧版のJSONを手動で取り込めます。',true)}}
 if(!trips.length){const t=freshTrip();await put('trips',t);trips=[t]}
 await loadTrip(trips[0].id);
-if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('./sw.js').catch(()=>{})}}
+// This build is intentionally single-file; a service worker is not required.
+// Retire only the previous Travel Log worker for this page's scope.
+if('serviceWorker' in navigator && location.protocol==='https:'){
+  navigator.serviceWorker.getRegistration('./').then(reg=>{
+    if(!reg) return;
+    const worker=reg.active||reg.waiting||reg.installing;
+    if(!worker) return;
+    const workerUrl=new URL(worker.scriptURL,location.href);
+    const expectedUrl=new URL('./sw.js',location.href);
+    if(workerUrl.href===expectedUrl.href) reg.unregister().catch(()=>{});
+  }).catch(()=>{});
+}}
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>render()).observe(editor);else window.addEventListener('resize',render);
 window.addEventListener('pagehide',()=>{if(current&&persistent&&saveTimer)saveCurrent(false)});
 window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent};setMode('draw');init().catch(e=>status('起動できませんでした：'+e.message,true));
 })();
 </script>
 <script>
-/* Real-map geographic route editor */
+/* Real-map geographic route editor — resilient iPhone rendering */
+/* Travel Log v1.2.2: persistent Canvas route + lightweight, non-WebGL raster basemap.
+   Basemap tiles are loaded only for the visible viewport, on demand; there is no bulk prefetch. */
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
-  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
-  const rid = () => (globalThis.crypto?.randomUUID?.() || 'geo-' + Date.now() + '-' + Math.random().toString(36).slice(2));
-  const copy = x => JSON.parse(JSON.stringify(x));
+  const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+  const uid = () => (crypto?.randomUUID?.() || 'geo-' + Date.now() + '-' + Math.random().toString(36).slice(2));
+  const clone = value => JSON.parse(JSON.stringify(value));
   const BR = () => window.TravelLogBridge;
   const trip = () => BR()?.getTrip();
   const segments = () => trip()?.geoSegments || [];
-  const geoStatus = (s, error = false) => { $('geo-status').textContent = s; $('geo-status').style.color = error ? '#a34535' : '#496b5d'; };
-  const centerDefault = [139.7146, 35.7292];
-  let map = null, isLoaded = false, loading = false, selected = 'real', mode = 'draw';
-  let pointers = new Map(), pending = null, gesture = null, movedMulti = false;
-  let forcedNew = false, undos = [], redos = [];
-  let playback = 0, playing = false, frame = null, previousFrame = null, playerMarker = null;
+  const defaultCenter = [139.7146, 35.7292];
   const overlay = $('geo-overlay');
   const ctx = overlay.getContext('2d');
-  let overlayRatio = 1;
+  const tilesEl = $('real-map');
+  const tiles = new Map();
+  const pointers = new Map();
+  let selected = 'real', mode = 'draw', ready = false;
+  let center = defaultCenter.slice(), zoom = 16.4;
+  let width = 1, height = 1, dpr = 1;
+  let pending = null, dragStart = null, pinch = null, usedMulti = false;
+  let forcedNew = false, undos = [], redos = [];
+  let playing = false, progress = 0, frame = null, lastFrame = null;
+  let totalTileFailures = 0, totalTileSuccesses = 0;
 
+  function setStatus(s, error = false) {
+    $('geo-status').textContent = s;
+    $('geo-status').style.color = error ? '#a34535' : '#496b5d';
+  }
+  function getSize() {
+    const r = overlay.getBoundingClientRect();
+    return {w: Math.max(1, r.width), h: Math.max(1, r.height)};
+  }
+  function mercator(lng, lat, z) {
+    const phi = clamp(lat, -85.05112878, 85.05112878) * Math.PI / 180;
+    const s = 256 * Math.pow(2, z);
+    return {x: (lng + 180) / 360 * s, y: (1 - Math.log(Math.tan(Math.PI / 4 + phi / 2)) / Math.PI) / 2 * s};
+  }
+  function inverse(x, y, z) {
+    const s = 256 * Math.pow(2, z);
+    const lat = Math.atan(Math.sinh(Math.PI * (1 - 2 * y / s))) * 180 / Math.PI;
+    return {lng: clamp(x / s * 360 - 180, -180, 180), lat: clamp(lat, -85.05112878, 85.05112878)};
+  }
+  function screenPoint(pt) {
+    const a = mercator(pt.lng, pt.lat, zoom), b = mercator(center[0], center[1], zoom);
+    return {x: a.x - b.x + width / 2, y: a.y - b.y + height / 2};
+  }
+  function lngLat(pt) {
+    const b = mercator(center[0], center[1], zoom);
+    return inverse(pt.x - width / 2 + b.x, pt.y - height / 2 + b.y, zoom);
+  }
+  function tileNotice() {
+    const message = $('geo-error');
+    if (!navigator.onLine) {
+      message.textContent = 'オフラインのため、地図の背景が表示されない場合があります。描画・保存・復元は使えます。';
+      message.style.display = 'block';
+    } else if (totalTileFailures >= 4 && totalTileSuccesses === 0) {
+      message.textContent = '地図画像を取得できませんでした。線の描画と保存はそのまま使えます。通信状態を確認して「地図を再読み込み」を押してください。';
+      message.style.display = 'block';
+    } else message.style.display = 'none';
+    $('geo-retry').style.display = message.style.display === 'block' ? '' : 'none';
+  }
+  function resizeCanvas() {
+    const s = getSize(), pixelRatio = Math.min(2.5, devicePixelRatio || 1);
+    if (s.w !== width || s.h !== height || pixelRatio !== dpr) {
+      width = s.w; height = s.h; dpr = pixelRatio;
+      overlay.width = Math.round(width * dpr);
+      overlay.height = Math.round(height * dpr);
+      overlay.style.width = width + 'px';
+      overlay.style.height = height + 'px';
+    }
+  }
+  function refreshTiles() {
+    if (selected !== 'real') return;
+    resizeCanvas();
+    const level = clamp(Math.floor(zoom), 2, 19);
+    const size = 256 * Math.pow(2, zoom - level);
+    const count = Math.pow(2, level);
+    const origin = mercator(center[0], center[1], level);
+    const left = Math.floor(origin.x / 256 - width / (2 * size));
+    const right = Math.floor(origin.x / 256 + width / (2 * size));
+    const top = Math.floor(origin.y / 256 - height / (2 * size));
+    const bottom = Math.floor(origin.y / 256 + height / (2 * size));
+    const wanted = new Set();
+    for (let y = top; y <= bottom; y++) {
+      if (y < 0 || y >= count) continue;
+      for (let x = left; x <= right; x++) {
+        if (x < 0 || x >= count) continue;
+        const key = level + '/' + x + '/' + y;
+        wanted.add(key);
+        const px = (x * 256 - origin.x) * size / 256 + width / 2;
+        const py = (y * 256 - origin.y) * size / 256 + height / 2;
+        let im = tiles.get(key);
+        if (!im) {
+          im = document.createElement('img');
+          im.alt = '';
+          im.draggable = false;
+          im.decoding = 'async';
+          im.style.cssText = 'position:absolute;pointer-events:none;user-select:none;-webkit-user-drag:none;max-width:none';
+          im.onload = () => { totalTileSuccesses++; tileNotice(); };
+          im.onerror = () => { totalTileFailures++; tileNotice(); };
+          tiles.set(key, im);
+          tilesEl.appendChild(im);
+          im.src = 'https://tile.openstreetmap.org/' + key + '.png';
+        }
+        im.style.left = px + 'px';
+        im.style.top = py + 'px';
+        im.style.width = (size + .8) + 'px';
+        im.style.height = (size + .8) + 'px';
+      }
+    }
+    for (const [key, im] of tiles) {
+      if (!wanted.has(key)) { im.onload = null; im.onerror = null; im.remove(); tiles.delete(key); }
+    }
+    $('geo-zoom').textContent = 'ズーム ' + (zoom - 1).toFixed(1);
+    $('map-placeholder').style.display = 'none';
+    tileNotice();
+  }
+  function renderPath(points, stroke, lineWidth = 4, dashed = false) {
+    if (!points.length) return;
+    ctx.beginPath();
+    points.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.setLineDash([]);
+    ctx.lineWidth = lineWidth + 4; ctx.strokeStyle = '#fff'; ctx.stroke();
+    if (dashed) ctx.setLineDash([2, 8]);
+    ctx.lineWidth = lineWidth; ctx.strokeStyle = stroke; ctx.stroke();
+    ctx.setLineDash([]);
+    if (points.length === 1) {
+      ctx.beginPath(); ctx.arc(points[0].x, points[0].y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = stroke; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = '#fff'; ctx.stroke();
+    }
+  }
+  function calculatePlaybackPoint() {
+    const pairs = [];
+    let total = 0;
+    for (const s of segments()) {
+      for (let i = 1; i < s.points.length; i++) {
+        const a = s.points[i - 1], b = s.points[i];
+        const dx = (a.lng - b.lng) * Math.cos((a.lat + b.lat) * Math.PI / 360);
+        const dy = a.lat - b.lat;
+        const len = Math.hypot(dx, dy);
+        pairs.push({a, b, len}); total += len;
+      }
+    }
+    if (!pairs.length) return null;
+    let traveled = total * progress;
+    for (let i = 0; i < pairs.length; i++) {
+      const seg = pairs[i];
+      if (traveled <= seg.len || i === pairs.length - 1) {
+        const t = seg.len ? clamp(traveled / seg.len, 0, 1) : 0;
+        return {lng: seg.a.lng + (seg.b.lng - seg.a.lng) * t, lat: seg.a.lat + (seg.b.lat - seg.a.lat) * t};
+      }
+      traveled -= seg.len;
+    }
+    return null;
+  }
+  function paint() {
+    resizeCanvas();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, width, height);
+    // Saved lines use the same Canvas as the live stroke: no dependency on WebGL or map tiles.
+    segments().forEach((s, i) => {
+      const pts = s.points.map(screenPoint);
+      renderPath(pts, '#168660', 4.6, true);
+      if (pts.length) {
+        const start = pts[0], end = pts.at(-1);
+        ctx.beginPath(); ctx.arc(start.x, start.y, 5, 0, Math.PI * 2);
+        ctx.fillStyle = i === 0 ? '#e99132' : '#fff'; ctx.fill();
+        ctx.lineWidth = 2; ctx.strokeStyle = '#168660'; ctx.stroke();
+        if (pts.length > 1) {
+          ctx.beginPath(); ctx.arc(end.x, end.y, 3.8, 0, Math.PI * 2);
+          ctx.fillStyle = '#168660'; ctx.fill();
+        }
+      }
+    });
+    if (pending && pending.pixels.length) renderPath(pending.pixels, '#e58c34', 4.8, false);
+    const player = calculatePlaybackPoint();
+    if (player && (playing || progress > 0)) {
+      const p = screenPoint(player);
+      ctx.beginPath();ctx.arc(p.x,p.y,12,0,Math.PI*2);
+      ctx.fillStyle='#26745f';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='#fff';ctx.stroke();
+      ctx.fillStyle='#fff';ctx.font='bold 12px -apple-system,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('●',p.x,p.y+1);
+    }
+  }
+  function redraw() { refreshTiles(); paint(); }
+  function persistView() {
+    const t = trip();
+    if (t) {
+      // Keep the legacy MapLibre zoom scale so old map views and future migration remain compatible.
+      t.mapView = {center: center.slice(), zoom: zoom - 1};
+      BR()?.changed();
+    }
+  }
+  function setZoom(next, anchor = {x:width/2,y:height/2}) {
+    const loc = lngLat(anchor);
+    zoom = clamp(next, 3, 19);
+    const anchorWorld = mercator(loc.lng, loc.lat, zoom);
+    const centered = inverse(anchorWorld.x - anchor.x + width / 2, anchorWorld.y - anchor.y + height / 2, zoom);
+    center = [centered.lng, centered.lat];
+    redraw(); persistView();
+  }
+  function setCenter(lng, lat) {
+    center = [clamp(lng,-180,180), clamp(lat,-85.05112878,85.05112878)];
+    redraw(); persistView();
+  }
   function counts() {
     const n = segments().reduce((sum, s) => sum + s.points.length, 0);
-    const value = `${segments().length}区間・${n}地点`;
-    $('geo-badge').textContent = value;
-    $('geo-count').textContent = value;
+    const label = `${segments().length}区間・${n}地点`;
+    $('geo-badge').textContent = $('geo-count').textContent = label;
     $('geo-undo').disabled = !undos.length;
     $('geo-redo').disabled = !redos.length;
     $('geo-next').classList.toggle('activated', forcedNew);
     $('geo-play').disabled = !segments().some(s => s.points.length >= 2);
-    $('geo-slider').disabled = $('geo-play').disabled;
     $('geo-reset').disabled = $('geo-play').disabled;
+    $('geo-slider').disabled = $('geo-play').disabled;
   }
-  function saveChanges() {
-    counts();
-    updateSources();
-    renderPending();
-    BR()?.changed();
+  function saved() { counts(); paint(); BR()?.changed(); }
+  function snapshot() { undos.push(clone(segments())); if (undos.length > 70) undos.shift(); redos = []; }
+  function distance(a,b) {return Math.hypot(a.x-b.x,a.y-b.y)}
+  function lineDistance(p,a,b) {
+    const dx=b.x-a.x,dy=b.y-a.y,len=dx*dx+dy*dy;
+    if (!len) return distance(p,a);
+    const f=clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/len,0,1);
+    return distance(p,{x:a.x+dx*f,y:a.y+dy*f});
   }
-  function recordHistory() {
-    undos.push(copy(segments()));
-    if (undos.length > 70) undos.shift();
-    redos = [];
-  }
-  function setMode(next) {
-    mode = next;
-    pending = null;
-    pointers.clear();
-    gesture = null;
-    for (const id of ['draw', 'tap', 'pan', 'erase']) {
-      $('geo-' + id).classList.toggle('activated', id === next);
-      $('geo-' + id).setAttribute('aria-pressed', String(id === next));
+  function simplify(points,epsilon) {
+    if (points.length<=2) return points;
+    // Iterative Ramer-Douglas-Peucker; robust with long finger strokes.
+    const kept = new Uint8Array(points.length); kept[0]=kept[points.length-1]=1;
+    const stack=[[0,points.length-1]];
+    while(stack.length){
+      const [a,b]=stack.pop();let best=epsilon,index=-1;
+      for(let i=a+1;i<b;i++){const d=lineDistance(points[i],points[a],points[b]);if(d>best){best=d;index=i}}
+      if(index>=0){kept[index]=1;stack.push([a,index],[index,b])}
     }
-    overlay.style.pointerEvents = next === 'pan' ? 'none' : 'auto';
-    overlay.style.cursor = next === 'erase' ? 'not-allowed' : next === 'pan' ? 'grab' : 'crosshair';
-    $('geo-hint').textContent = {
-      draw: '1本指で地図の上をなぞって徒歩ルートを描きます。2本指で地図を移動・拡大できます。道路への自動吸着はしません。',
-      tap: '地点をタップして追加。近くの既存の線には途中挿入でき、遠い地点には勝手につながりません。',
-      pan: '1本指で地図を移動・2本指で拡大縮小できます。描画するときは「線を描く」に戻してください。',
-      erase: '消したい線の近くをタップすると、その区間を削除します。'
+    return points.filter((_,i)=>kept[i]);
+  }
+  function nearest(p){
+    const hit={index:-1,edge:-1,distance:Infinity};
+    segments().forEach((seg,i)=>seg.points.forEach((ll,j)=>{
+      const d = j ? lineDistance(p, screenPoint(seg.points[j-1]),screenPoint(ll)) : distance(p,screenPoint(ll));
+      if(d<hit.distance){hit.index=i;hit.edge=j;hit.distance=d}
+    }));
+    return hit;
+  }
+  function addStroke(pixels) {
+    if(!pixels.length)return;
+    const points = simplify(pixels,1.7).map(lngLat);
+    const old=segments().at(-1);
+    const connect=!!old?.points?.length&&!forcedNew&&old.source==='hand'&&distance(screenPoint(old.points.at(-1)),screenPoint(points[0]))<32;
+    snapshot();
+    if(connect) old.points.push(...points.slice(1));
+    else segments().push({id:uid(),mode:'walk',source:'hand',points});
+    forcedNew=false; saved();
+    setStatus('線を保存しました。指を離しても残ります。');
+  }
+  function addPoint(p) {
+    const hit=nearest(p), point=lngLat(p);
+    snapshot();
+    if(!forcedNew&&hit.index>=0&&hit.distance<20&&segments()[hit.index].points.length>=2){
+      segments()[hit.index].points.splice(Math.max(1,hit.edge),0,point);
+      setStatus('既存の経路へ地点を挿入しました。');
+    }else{
+      const old=segments().at(-1);
+      if(!forcedNew&&old?.source==='tap'&&old.points.length&&distance(screenPoint(old.points.at(-1)),p)<55)old.points.push(point);
+      else segments().push({id:uid(),mode:'walk',source:'tap',points:[point]});
+      setStatus('地点を追加しました。遠くの線とは勝手につながりません。');
+    }
+    forcedNew=false;saved();
+  }
+  function setMode(next){
+    mode=next; pending=null;dragStart=null;pinch=null;pointers.clear();
+    for(const id of ['draw','tap','pan','erase']){
+      $('geo-'+id).classList.toggle('activated',id===next);
+      $('geo-'+id).setAttribute('aria-pressed',String(id===next));
+    }
+    $('geo-hint').textContent={
+      draw:'1本指でなぞると経路が残ります。2本指で地図の拡大・移動ができます。',
+      tap:'地点をタップして追加。近くの線なら途中に挿入できます。',
+      pan:'1本指で地図を移動、2本指でピンチ拡大できます。',
+      erase:'消したい線の近くをタップすると、その区間だけを削除します。'
     }[next];
-    renderPending();
+    overlay.style.cursor=next==='pan'?'grab':next==='erase'?'not-allowed':'crosshair';
+    paint();
   }
-  function position(e) { const r = overlay.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
-  function distance(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
-  function screenPoint(ll) { const p = map.project([ll.lng, ll.lat]); return { x: p.x, y: p.y }; }
-  function lngLat(p) { const v = map.unproject([p.x, p.y]); return { lng: v.lng, lat: v.lat }; }
-  function distanceSegment(p, a, b) {
-    const dx = b.x - a.x, dy = b.y - a.y, z = dx * dx + dy * dy;
-    if (!z) return distance(p, a);
-    const t = clamp(((p.x - a.x) * dx + (p.y - a.y) * dy) / z, 0, 1);
-    return distance(p, { x: a.x + dx * t, y: a.y + dy * t });
-  }
-  function simplify(pts, epsilon) {
-    if (pts.length <= 2) return pts;
-    const a = pts[0], b = pts.at(-1);
-    let max = 0, idx = -1;
-    for (let i = 1; i < pts.length - 1; i++) {
-      const d = distanceSegment(pts[i], a, b);
-      if (d > max) { idx = i; max = d; }
-    }
-    if (max > epsilon && idx >= 1) return [...simplify(pts.slice(0, idx + 1), epsilon).slice(0, -1), ...simplify(pts.slice(idx), epsilon)];
-    return [a, b];
-  }
-  function closestRoute(p) {
-    let best = { index: -1, edge: -1, distance: Infinity };
-    for (let i = 0; i < segments().length; i++) {
-      const pts = segments()[i].points;
-      for (let j = 0; j < pts.length; j++) {
-        const d = j === 0 ? distance(p, screenPoint(pts[j])) : distanceSegment(p, screenPoint(pts[j - 1]), screenPoint(pts[j]));
-        if (d < best.distance) best = { index: i, edge: j, distance: d };
-      }
-    }
-    return best;
-  }
-  function appendStroke(pts, source) {
-    if (!pts.length) return;
-    const s = segments().at(-1);
-    const near = s?.points?.length && distance(screenPoint(s.points.at(-1)), screenPoint(pts[0])) < 32;
-    const join = near && !forcedNew && s.source === source;
-    recordHistory();
-    if (join) s.points.push(...pts.slice(1));
-    else segments().push({ id: rid(), mode: 'walk', source, points: pts });
-    forcedNew = false;
-    saveChanges();
-    geoStatus('実地図の経路を記録しました。端末内に自動保存します。');
-  }
-  function placeTap(p) {
-    const point = lngLat(p), hit = closestRoute(p);
-    recordHistory();
-    if (!forcedNew && hit.distance < 20 && hit.index >= 0 && segments()[hit.index].points.length > 1) {
-      // Insert into the closest edge, never at the end of an unrelated line.
-      segments()[hit.index].points.splice(Math.max(1, hit.edge), 0, point);
-      geoStatus('近くの経路の途中に地点を挿入しました。');
-    } else {
-      const s = segments().at(-1);
-      if (!forcedNew && s?.source === 'tap' && s.points.length && distance(screenPoint(s.points.at(-1)), p) < 55) {
-        s.points.push(point);
-      } else {
-        segments().push({ id: rid(), mode: 'walk', source: 'tap', points: [point] });
-      }
-      geoStatus('地点を追加しました。離れた地点には勝手につながりません。');
-    }
-    forcedNew = false;
-    saveChanges();
-  }
-  function pointerDown(e) {
-    if (!isLoaded || !trip() || (e.pointerType === 'mouse' && e.button !== 0)) return;
+  function position(e){const b=overlay.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top}}
+  function pointerDown(e){
+    if(!trip() || (e.pointerType==='mouse'&&e.button!==0))return;
     e.preventDefault();
-    try { overlay.setPointerCapture(e.pointerId); } catch (_) {}
-    const p = position(e);
-    pointers.set(e.pointerId, p);
-    if (pointers.size === 2) {
-      const [a, b] = [...pointers.values()];
-      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
-      gesture = { mid, d: Math.max(1, distance(a, b)), zoom: map.getZoom(), center: map.getCenter().toArray(), anchor: map.unproject([mid.x, mid.y]) };
-      pending = null;
-      movedMulti = true;
-      renderPending();
-    } else if (pointers.size === 1 && mode === 'draw') {
-      movedMulti = false;
-      pending = { start: p, last: p, pixels: [p] };
-      renderPending();
+    try{overlay.setPointerCapture(e.pointerId)}catch(_){}
+    const p=position(e);pointers.set(e.pointerId,p);
+    if(pointers.size>=2){
+      const ab=[...pointers.values()].slice(0,2),mid={x:(ab[0].x+ab[1].x)/2,y:(ab[0].y+ab[1].y)/2};
+      pinch={startZoom:zoom,startDist:Math.max(1,distance(ab[0],ab[1])),anchor:lngLat(mid)};
+      pending=null;dragStart=null;usedMulti=true;paint();
+    }else{
+      usedMulti=false;
+      if(mode==='draw')pending={start:p,last:p,pixels:[p]};
+      if(mode==='pan')dragStart={at:p,center:center.slice()};
     }
   }
-  function pointerMove(e) {
-    if (!pointers.has(e.pointerId) || !isLoaded) return;
-    e.preventDefault();
-    const p = position(e);
-    pointers.set(e.pointerId, p);
-    if (gesture && pointers.size >= 2) {
-      const [a, b] = [...pointers.values()];
-      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
-      const newZoom = clamp(gesture.zoom + Math.log2(Math.max(1, distance(a, b)) / gesture.d), 2, 20);
-      map.jumpTo({ center: gesture.center, zoom: newZoom });
-      const under = map.unproject([mid.x, mid.y]);
-      const center = map.getCenter();
-      map.jumpTo({ center: [center.lng + gesture.anchor.lng - under.lng, center.lat + gesture.anchor.lat - under.lat], zoom: newZoom });
-      renderPending();
-      return;
+  function pointerMove(e){
+    if(!pointers.has(e.pointerId))return;
+    e.preventDefault();const p=position(e);pointers.set(e.pointerId,p);
+    if(pinch&&pointers.size>=2){
+      const ab=[...pointers.values()].slice(0,2),mid={x:(ab[0].x+ab[1].x)/2,y:(ab[0].y+ab[1].y)/2};
+      zoom=clamp(pinch.startZoom+Math.log2(Math.max(1,distance(ab[0],ab[1]))/pinch.startDist),3,19);
+      const w=mercator(pinch.anchor.lng,pinch.anchor.lat,zoom);
+      const next=inverse(w.x-mid.x+width/2,w.y-mid.y+height/2,zoom);
+      center=[next.lng,next.lat];redraw();return;
     }
-    if (pending && mode === 'draw' && !movedMulti && distance(pending.last, p) > 2.6) {
-      pending.pixels.push(p);
-      pending.last = p;
-      if (pending.pixels.length > 3500) pending.pixels = simplify(pending.pixels, 1.3);
-      renderPending();
+    if(usedMulti)return;
+    if(dragStart && mode==='pan'){
+      const a=mercator(dragStart.center[0],dragStart.center[1],zoom);
+      const next=inverse(a.x-(p.x-dragStart.at.x),a.y-(p.y-dragStart.at.y),zoom);
+      center=[next.lng,next.lat];redraw();return;
+    }
+    if(pending&&mode==='draw'&&distance(pending.last,p)>2.4){
+      pending.pixels.push(p);pending.last=p;
+      if(pending.pixels.length>2200)pending.pixels=simplify(pending.pixels,1.2);
+      paint();
     }
   }
-  function pointerUp(e) {
-    if (!pointers.has(e.pointerId) || !isLoaded) return;
-    e.preventDefault();
-    const p = position(e);
+  function pointerUp(e){
+    if(!pointers.has(e.pointerId))return;
+    e.preventDefault();const p=position(e);pointers.delete(e.pointerId);
+    if(pinch){if(pointers.size<2){pinch=null;dragStart=null;persistView()}paint();return;}
+    if(pointers.size||usedMulti)return;
+    if(mode==='draw'&&pending){
+      const old=pending;pending=null;
+      if(distance(old.start,p)<5||old.pixels.length<2)addPoint(p);
+      else addStroke(old.pixels);
+    }else if(mode==='tap')addPoint(p);
+    else if(mode==='erase'){
+      const hit=nearest(p);
+      if(hit.index>=0&&hit.distance<=19){snapshot();segments().splice(hit.index,1);saved();setStatus('区間を削除しました。「戻す」で復元できます。')}
+      else setStatus('削除する線の近くをタップしてください。');
+    }else if(mode==='pan')persistView();
+    dragStart=null;paint();
+  }
+  function pointerCancel(e){
     pointers.delete(e.pointerId);
-    if (gesture) {
-      pending = null;
-      if (pointers.size < 2) gesture = null;
-      renderPending();
-      return;
-    }
-    if (pointers.size) return;
-    if (mode === 'draw' && pending && !movedMulti) {
-      const pixels = pending.pixels;
-      const start = pending.start;
-      pending = null;
-      if (distance(p, start) < 5 || pixels.length < 2) placeTap(p);
-      else appendStroke(simplify(pixels, 1.6).map(lngLat), 'hand');
-      renderPending();
-    } else if (mode === 'tap' && !movedMulti) placeTap(p);
-    else if (mode === 'erase' && !movedMulti) {
-      const hit = closestRoute(p);
-      if (hit.index >= 0 && hit.distance <= 19) {
-        recordHistory();
-        segments().splice(hit.index, 1);
-        saveChanges();
-        geoStatus('区間を削除しました。「戻す」で復元できます。');
-      } else geoStatus('消す線の近くをタップしてください。');
-    }
-    movedMulti = false;
+    if(pending&&pending.pixels.length>2&&!usedMulti){const px=pending.pixels.slice();pending=null;addStroke(px)}
+    pending=null;dragStart=null;if(pointers.size<2)pinch=null;paint();
   }
-  function pointerCancel(e) {
-    pointers.delete(e.pointerId);
-    pending = null;
-    if (pointers.size < 2) gesture = null;
-    renderPending();
+  function setProgress(value){
+    progress=clamp(value,0,1);
+    $('geo-slider').value=Math.round(progress*1000);
+    $('geo-percent').textContent=Math.round(progress*100)+'%';
+    paint();
   }
-  function renderPending() {
-    const box = $('map-container');
-    const w = box.clientWidth || 1, h = box.clientHeight || 1;
-    const dpr = Math.min(2.5, window.devicePixelRatio || 1);
-    if (overlay.width !== Math.round(w * dpr) || overlay.height !== Math.round(h * dpr) || overlayRatio !== dpr) {
-      overlay.width = Math.round(w * dpr);
-      overlay.height = Math.round(h * dpr);
-      overlay.style.width = w + 'px';
-      overlay.style.height = h + 'px';
-      overlayRatio = dpr;
-    }
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, w, h);
-    if (!pending || !pending.pixels.length) return;
-    ctx.beginPath();
-    pending.pixels.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.stroke();
-    ctx.strokeStyle = '#e58c34'; ctx.lineWidth = 4.5; ctx.stroke();
+  function stopPlayback(){
+    playing=false;lastFrame=null;
+    if(frame!==null)cancelAnimationFrame(frame);
+    frame=null;$('geo-play').textContent='▶ 再生';
   }
-  function featureCollection() {
-    return { type: 'FeatureCollection', features: segments().filter(s => s.points.length >= 2).map(s => ({
-      type: 'Feature', properties: { id: s.id },
-      geometry: { type: 'LineString', coordinates: s.points.map(p => [p.lng, p.lat]) }
-    })) };
+  function animate(time){
+    if(!playing)return;
+    if(lastFrame!==null)setProgress(progress+(time-lastFrame)*Number($('geo-speed').value)/16000);
+    lastFrame=time;
+    if(progress>=1){stopPlayback();return}
+    frame=requestAnimationFrame(animate);
   }
-  function endpoints() {
-    return { type: 'FeatureCollection', features: segments().flatMap((s, i) => {
-      if (!s.points.length) return [];
-      const a = s.points[0], b = s.points.at(-1);
-      return [{ type: 'Feature', properties: { kind: i === 0 ? 'first' : 'start' }, geometry: { type: 'Point', coordinates: [a.lng, a.lat] } },
-        ...(s.points.length > 1 ? [{ type: 'Feature', properties: { kind: 'end' }, geometry: { type: 'Point', coordinates: [b.lng, b.lat] } }] : [])];
-    }) };
+  function onTripChanged(){
+    stopPlayback();progress=0;pending=null;forcedNew=false;undos=[];redos=[];
+    const v=trip()?.mapView;
+    center=Array.isArray(v?.center)&&v.center.length===2 ? [Number(v.center[0]), Number(v.center[1])] : defaultCenter.slice();
+    zoom=clamp((Number(v?.zoom)||15.4)+1,3,19);
+    counts();redraw();setProgress(0);
+    setStatus('旅の経路を読み込みました。描いた線は指を離しても残ります。');
   }
-  function updateSources() {
-    if (!isLoaded) return;
-    map.getSource('user-lines')?.setData(featureCollection());
-    map.getSource('user-points')?.setData(endpoints());
-    counts();
-    drawPlayback();
+  function display(next){
+    selected=next;
+    const real=next==='real';
+    $('map-panel').hidden=!real;$('map-panel').style.display=real?'':'none';
+    $('venue-panel').hidden=real;$('venue-panel').style.display=real?'none':'';
+    $('tab-real').setAttribute('aria-selected',String(real));
+    $('tab-venue').setAttribute('aria-selected',String(!real));
+    if(real)requestAnimationFrame(redraw);
+    else requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')));
   }
-  function onTripChanged() {
-    stopPlayback();
-    playback = 0;
-    pending = null;
-    forcedNew = false;
-    undos = []; redos = [];
-    counts();
-    if (map && isLoaded) {
-      const v = trip()?.mapView;
-      if (v?.center?.length === 2) map.jumpTo({ center: v.center, zoom: v.zoom });
-      updateSources();
-    }
-    geoStatus('この旅の実地図ルートを読み込みました。');
+  function fitRoute(){
+    const pts=segments().flatMap(s=>s.points);
+    if(!pts.length){setStatus('まだ実地図の経路がありません。');return}
+    if(pts.length===1){center=[pts[0].lng,pts[0].lat];zoom=17.5;redraw();persistView();return}
+    const projected=pts.map(p=>mercator(p.lng,p.lat,0));
+    const xx=projected.map(p=>p.x), yy=projected.map(p=>p.y);
+    const loX=Math.min(...xx),hiX=Math.max(...xx),loY=Math.min(...yy),hiY=Math.max(...yy);
+    zoom=clamp(Math.log2(Math.min((width-65)/Math.max(.005,hiX-loX),(height-65)/Math.max(.005,hiY-loY))),3,18.5);
+    const c=inverse((loX+hiX)/2,(loY+hiY)/2,0);
+    center=[c.lng,c.lat];redraw();persistView();
   }
-  window.TravelLogMap = { onTripChanged };
-
-  function display(view) {
-    selected = view;
-    const real = view === 'real';
-    $('map-panel').hidden = !real;
-    $('map-panel').style.display = real ? '' : 'none';
-    $('venue-panel').hidden = real;
-    $('venue-panel').style.display = real ? 'none' : '';
-    $('tab-real').setAttribute('aria-selected', String(real));
-    $('tab-venue').setAttribute('aria-selected', String(!real));
-    if (real) {
-      ensureMap();
-      requestAnimationFrame(() => { map?.resize(); renderPending(); });
-    } else {
-      requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
-    }
-  }
-  $('tab-real').addEventListener('click', () => display('real'));
-  $('tab-venue').addEventListener('click', () => display('venue'));
-
-  function fail(message) {
-    loading = false;
-    $('geo-error').textContent = message;
-    $('geo-error').style.display = 'block';
-    $('geo-retry').style.display = '';
-    $('map-placeholder').textContent = '実地図を表示できません';
-    geoStatus(message, true);
-  }
-  function loadMapScript() {
-    if (window.maplibregl) return Promise.resolve();
-    if (!document.getElementById('maplibre-css-v12')) {
-      const stylesheet = document.createElement('link');
-      stylesheet.id = 'maplibre-css-v12';
-      stylesheet.rel = 'stylesheet';
-      stylesheet.href = 'https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css';
-      document.head.append(stylesheet);
-    }
-    return new Promise((resolve, reject) => {
-      const s = document.createElement('script');
-      s.src = 'https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js';
-      s.onload = resolve;
-      s.onerror = () => reject(new Error('地図ライブラリの通信に失敗しました'));
-      document.head.append(s);
-    });
-  }
-  async function ensureMap() {
-    if (map || loading || selected !== 'real') return;
-    loading = true;
-    if (!navigator.onLine) {
-      fail('オフラインです。実地図を読み込むには一度ネット接続が必要です。会場図モードはオフラインでも編集できます。');
-      return;
-    }
-    try {
-      await loadMapScript();
-      if (!window.maplibregl) throw Error('地図ライブラリの起動に失敗しました');
-      const v = trip()?.mapView;
-      map = new maplibregl.Map({
-        container: 'real-map', style: 'https://tiles.openfreemap.org/styles/liberty',
-        center: v?.center || centerDefault, zoom: v?.zoom || 15.4,
-        attributionControl: true, maxZoom: 20
-      });
-      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-      map.on('load', () => {
-        loading = false; isLoaded = true;
-        $('map-placeholder').style.display = 'none';
-        $('geo-error').style.display = 'none';
-        $('geo-retry').style.display = 'none';
-        map.addSource('user-lines', { type: 'geojson', data: featureCollection() });
-        map.addLayer({ id: 'user-line-border', type: 'line', source: 'user-lines', paint: { 'line-color': '#fff', 'line-width': 8 } });
-        map.addLayer({ id: 'user-line-walk', type: 'line', source: 'user-lines', paint: { 'line-color': '#138660', 'line-width': 4, 'line-dasharray': [0.75, 1.5] } });
-        map.addSource('user-points', { type: 'geojson', data: endpoints() });
-        map.addLayer({ id: 'user-endpoints', type: 'circle', source: 'user-points', paint: { 'circle-radius': 5, 'circle-color': ['case', ['==', ['get', 'kind'], 'first'], '#e9943b', '#26745f'], 'circle-stroke-width': 2, 'circle-stroke-color': '#fff' } });
-        const player = document.createElement('div');
-        player.style.cssText = 'height:25px;width:25px;border-radius:50%;display:grid;place-items:center;border:3px solid white;background:#208260;color:white;box-shadow:0 2px 5px #0005;font-size:13px';
-        player.textContent = '●';
-        playerMarker = new maplibregl.Marker({ element: player, anchor: 'center' });
-        updateSources();
-        geoStatus('実地図を表示しました。描画した経路は旅ごとに自動保存します。');
-        renderPending();
-      });
-      map.on('move', () => { $('geo-zoom').textContent = 'ズーム ' + map.getZoom().toFixed(1); renderPending(); });
-      map.on('moveend', () => {
-        const t = trip();
-        if (t && isLoaded && selected === 'real') {
-          const c = map.getCenter();
-          t.mapView = { center: [c.lng, c.lat], zoom: map.getZoom() };
-          BR()?.changed();
-        }
-      });
-      map.on('error', e => {
-        if (!isLoaded) {
-          $('geo-error').textContent = '地図の読み込みに問題が発生しました。通信状態を確認してください。';
-          $('geo-error').style.display = 'block';
-          $('geo-retry').style.display = '';
-          geoStatus('地図を読み込めませんでした。会場図モードは使用できます。', true);
-        }
-      });
-    } catch (err) {
-      fail('実地図を表示できませんでした：' + String(err.message || err) + '。会場図モードは引き続き使えます。');
-    }
-  }
-  function segmentLengths() {
-    const out = [];
-    let total = 0;
-    for (const s of segments()) {
-      let len = 0;
-      const steps = [];
-      for (let i = 1; i < s.points.length; i++) {
-        const a = s.points[i - 1], b = s.points[i];
-        const dx = (b.lng - a.lng) * Math.cos((a.lat + b.lat) * Math.PI / 360);
-        const dy = b.lat - a.lat;
-        const d = Math.hypot(dx, dy);
-        steps.push(d); len += d;
-      }
-      out.push({ points: s.points, len, steps });
-      total += len;
-    }
-    return { out, total };
-  }
-  function drawPlayback() {
-    $('geo-percent').textContent = Math.round(playback * 100) + '%';
-    $('geo-slider').value = Math.round(playback * 1000);
-    $('geo-play').textContent = playing ? 'Ⅱ 一時停止' : '▶ 再生';
-    if (!isLoaded || !playerMarker) return;
-    const route = segmentLengths();
-    if (route.total <= 0) { playerMarker.remove(); return; }
-    let left = playback * route.total;
-    for (const seg of route.out) {
-      if (!seg.steps.length) continue;
-      if (left <= seg.len || seg === route.out.at(-1)) {
-        for (let i = 0; i < seg.steps.length; i++) {
-          const d = seg.steps[i], a = seg.points[i], b = seg.points[i + 1];
-          if (left <= d || i === seg.steps.length - 1) {
-            const t = d ? clamp(left / d, 0, 1) : 0;
-            playerMarker.setLngLat([a.lng + (b.lng - a.lng) * t, a.lat + (b.lat - a.lat) * t]).addTo(map);
-            return;
-          }
-          left -= d;
-        }
-      }
-      left -= seg.len;
-    }
-  }
-  function stopPlayback() {
-    playing = false;
-    previousFrame = null;
-    if (frame !== null) cancelAnimationFrame(frame);
-    frame = null;
-    drawPlayback();
-  }
-  function tick(time) {
-    if (!playing) return;
-    if (previousFrame !== null) playback = clamp(playback + (time - previousFrame) * Number($('geo-speed').value) / 16000, 0, 1);
-    previousFrame = time;
-    drawPlayback();
-    if (playback >= 1) stopPlayback();
-    else frame = requestAnimationFrame(tick);
-  }
-  $('geo-play').addEventListener('click', () => {
-    if (!isLoaded || !segments().some(s => s.points.length >= 2)) return;
-    if (playing) stopPlayback();
-    else { if (playback >= 1) playback = 0; playing = true; previousFrame = null; frame = requestAnimationFrame(tick); drawPlayback(); }
+  $('tab-real').addEventListener('click',()=>display('real'));
+  $('tab-venue').addEventListener('click',()=>display('venue'));
+  for(const id of ['draw','tap','pan','erase'])$('geo-'+id).addEventListener('click',()=>setMode(id));
+  $('geo-zoom-in').addEventListener('click',()=>setZoom(zoom+.65));
+  $('geo-zoom-out').addEventListener('click',()=>setZoom(zoom-.65));
+  $('geo-center').addEventListener('click',()=>setCenter(...defaultCenter));
+  $('geo-fit').addEventListener('click',fitRoute);
+  $('geo-retry').addEventListener('click',()=>{
+    totalTileFailures=0;totalTileSuccesses=0;
+    for(const im of tiles.values()){im.onload=null;im.onerror=null;im.remove()}
+    tiles.clear();redraw();setStatus('表示中の地図画像を読み直しています。');
   });
-  $('geo-reset').addEventListener('click', () => { stopPlayback(); playback = 0; drawPlayback(); });
-  $('geo-slider').addEventListener('input', () => { stopPlayback(); playback = Number($('geo-slider').value) / 1000; drawPlayback(); });
-  for (const id of ['draw', 'tap', 'pan', 'erase']) $('geo-' + id).addEventListener('click', () => setMode(id));
-  $('geo-next').addEventListener('click', () => { forcedNew = true; counts(); geoStatus('次に描く経路は、新しい区間になります。'); });
-  $('geo-undo').addEventListener('click', () => {
-    if (!undos.length) return;
-    redos.push(copy(segments()));
-    trip().geoSegments = undos.pop();
-    forcedNew = false;
-    saveChanges();
+  $('geo-next').addEventListener('click',()=>{forcedNew=true;counts();setStatus('次に描く線は別の区間になります。')});
+  $('geo-undo').addEventListener('click',()=>{if(!undos.length)return;redos.push(clone(segments()));trip().geoSegments=undos.pop();forcedNew=false;saved()});
+  $('geo-redo').addEventListener('click',()=>{if(!redos.length)return;undos.push(clone(segments()));trip().geoSegments=redos.pop();forcedNew=false;saved()});
+  $('geo-clear').addEventListener('click',()=>{
+    if(!segments().length||!confirm('実地図の経路をすべて削除しますか？（会場図の線は残ります）'))return;
+    snapshot();trip().geoSegments=[];forcedNew=false;stopPlayback();setProgress(0);saved();setStatus('実地図の経路だけ削除しました。');
   });
-  $('geo-redo').addEventListener('click', () => {
-    if (!redos.length) return;
-    undos.push(copy(segments()));
-    trip().geoSegments = redos.pop();
-    forcedNew = false;
-    saveChanges();
+  $('geo-play').addEventListener('click',()=>{
+    if(!segments().some(s=>s.points.length>=2))return;
+    if(playing){stopPlayback();return}
+    if(progress>=1)setProgress(0);
+    playing=true;lastFrame=null;$('geo-play').textContent='Ⅱ 一時停止';frame=requestAnimationFrame(animate);
   });
-  $('geo-clear').addEventListener('click', () => {
-    if (!segments().length || !confirm('実地図の経路だけをすべて消しますか？会場図の線は残ります。')) return;
-    recordHistory(); trip().geoSegments = []; forcedNew = false; stopPlayback(); playback = 0;
-    saveChanges(); geoStatus('実地図の経路だけを削除しました。');
-  });
-  $('geo-zoom-in').addEventListener('click', () => map?.zoomIn());
-  $('geo-zoom-out').addEventListener('click', () => map?.zoomOut());
-  $('geo-center').addEventListener('click', () => map?.flyTo({ center: centerDefault, zoom: 15.4 }));
-  $('geo-retry').addEventListener('click', () => {
-    if (isLoaded) return;
-    try { map?.remove(); } catch (_) {}
-    map = null; loading = false;
-    $('geo-error').style.display = 'none';
-    $('geo-retry').style.display = 'none';
-    $('map-placeholder').textContent = '地図を読み込み中…';
-    ensureMap();
-  });
-  $('geo-fit').addEventListener('click', () => {
-    if (!map || !isLoaded) return;
-    const pts = segments().flatMap(s => s.points);
-    if (!pts.length) { geoStatus('まだ実地図の経路がありません。'); return; }
-    if (pts.length === 1) map.flyTo({ center: [pts[0].lng, pts[0].lat], zoom: 17 });
-    else {
-      const b = new maplibregl.LngLatBounds();
-      pts.forEach(p => b.extend([p.lng, p.lat]));
-      if (b.getNorth() === b.getSouth() && b.getWest() === b.getEast()) map.flyTo({ center: b.getCenter(), zoom: 17 });
-      else map.fitBounds(b, { padding: 45, maxZoom: 18 });
-    }
-  });
-  overlay.addEventListener('pointerdown', pointerDown);
-  overlay.addEventListener('pointermove', pointerMove);
-  overlay.addEventListener('pointerup', pointerUp);
-  overlay.addEventListener('pointercancel', pointerCancel);
-  overlay.addEventListener('lostpointercapture', e => { if (pointers.has(e.pointerId)) pointerCancel(e); });
-  overlay.addEventListener('wheel', e => { if (map) { e.preventDefault(); map.zoomTo(clamp(map.getZoom() + (e.deltaY < 0 ? 0.5 : -0.5), 2, 20)); } }, { passive: false });
-  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(() => { map?.resize(); renderPending(); }).observe($('map-container'));
-  window.addEventListener('online', () => { if (!map && selected === 'real') ensureMap(); });
-  counts(); setMode('draw'); display('real');
+  $('geo-reset').addEventListener('click',()=>{stopPlayback();setProgress(0)});
+  $('geo-slider').addEventListener('input',()=>{stopPlayback();setProgress(Number($('geo-slider').value)/1000)});
+  for(const type of ['pointerdown','pointermove','pointerup','pointercancel']){
+    const fn={pointerdown:pointerDown,pointermove:pointerMove,pointerup:pointerUp,pointercancel:pointerCancel}[type];
+    overlay.addEventListener(type,fn);
+  }
+  overlay.addEventListener('lostpointercapture',e=>{if(pointers.has(e.pointerId))pointerCancel(e)});
+  overlay.addEventListener('wheel',e=>{e.preventDefault();const p=position(e);setZoom(zoom+(e.deltaY<0?.4:-.4),p)},{passive:false});
+  if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>redraw()).observe($('map-container'));
+  else window.addEventListener('resize',redraw);
+  window.addEventListener('online',()=>{totalTileFailures=0;totalTileSuccesses=0;redraw()});
+  window.TravelLogMap={onTripChanged};
+  setMode('draw');counts();display('real');
 })();
 
 </script>
