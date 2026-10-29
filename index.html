@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f7f5">
-<title>旅ログ｜実地図＋迷子ログ Ver.1.2.5 単体版</title>
+<title>旅ログ｜Googleタイムライン対応 Ver.1.2.7</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#233b38;background:#f4f7f5;-webkit-text-size-adjust:100%}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer;white-space:nowrap;min-height:44px;border:1px solid #c9d9d2;color:#23453c;background:#fff;border-radius:12px;padding:9px 13px;font-weight:600}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,.file-picker:focus-within{outline:3px solid #6aa8cf;outline-offset:2px}button.primary{color:white;background:#26745f;border-color:#26745f}button.danger{color:#a83e46}button.activated{border-color:#26745f;background:#e2f4ec;color:#145943}a{color:#216d67}main{max-width:800px;margin:0 auto;padding:16px 14px 66px}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;flex-wrap:wrap}h1{font-size:23px;letter-spacing:.02em;margin:0}h2{font-size:17px;margin:0 0 8px}p{line-height:1.55}small,.muted{color:#647b74}small{font-size:12px}.tiny{font-size:11px;color:#667a75}label{font-size:13px;font-weight:650;display:block;margin-bottom:5px}.stack{display:grid;gap:10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.panel{background:white;border:1px solid #e1e8e4;border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 8px #183e2e09}.intro{font-size:13px;color:#5e756e;margin:6px 0 0}.field{min-width:0;flex:1}.field-wide{min-width:180px;flex:2}.control{height:44px;width:100%;border-radius:10px;border:1px solid #c8d9d1;background:#fff;padding:10px;color:#253e37;min-width:0;font-size:16px}textarea.control{height:auto;min-height:85px;resize:vertical;line-height:1.5}.pill{border:1px solid #bad6c6;border-radius:99px;padding:5px 10px;background:#ebf7ef;color:#28634d;font-size:11px;font-weight:650}.tool-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.tool-row button{font-size:13px;padding:7px 4px;min-height:52px;line-height:1.3;white-space:normal;overflow-wrap:anywhere;min-width:0}.editor{position:relative;height:clamp(300px,59vw,540px);background:#e5ece7;border:1px solid #b6cfc1;border-radius:13px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}.editor canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none}.editor-badge{position:absolute;z-index:1;top:10px;left:10px;max-width:calc(100% - 20px);padding:7px 10px;background:#fffef3ee;border-radius:9px;box-shadow:0 1px 4px #0001;font-size:12px;font-weight:650;pointer-events:none}.editor-footer{position:absolute;z-index:1;bottom:8px;right:9px;padding:5px 8px;background:#fffef3de;border-radius:8px;color:#436157;font-size:11px;pointer-events:none}.hint{padding:9px 11px;border-radius:10px;background:#edf6f0;color:#3e6251;font-size:12px;line-height:1.65;margin:8px 0}.notice{margin:8px 0 0;color:#4b6a61;font-size:12px;line-height:1.6}.stats{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0;color:#4b6e62;font-size:12px}.stats b{font-size:14px;color:#245443}.file-picker{display:inline-flex;align-items:center;justify-content:center;background:white;border:1px solid #c9d9d2;border-radius:11px;padding:9px 13px;min-height:44px;font-size:13px;font-weight:650;cursor:pointer;position:relative}.file-picker input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.spacer{flex:1}.status{min-height:35px;border-radius:9px;background:#eff6f1;padding:9px 11px;color:#285848;font-size:12px;line-height:1.55;margin-top:10px}.status.error{background:#fff0e8;color:#994a38}.divider{border:0;border-top:1px solid #e5ede7;margin:14px 0}.subtitle{font-size:13px;color:#57776c;margin:4px 0 10px}.image-note{font-size:12px;color:#617970;line-height:1.6}.blueprint{border-radius:11px;padding:12px;background:#f1f7f7;color:#516c68;font-size:12px}.kbd{background:#e5eee7;padding:2px 6px;border-radius:5px;font-size:11px}.hide{display:none!important}
@@ -23,6 +23,15 @@
 .import-preview[hidden]{display:none}
 .segment-row button{min-height:38px;font-size:12px;padding:7px 9px}
 .segment-row.selected{border-color:#39876c;background:#edf8f1}
+/* v1.2.7: playback stays directly below the map, imports fold away */
+.map-playback{background:#f6faf7;border:1px solid #d6e5da;border-radius:12px;padding:12px;margin:12px 0 10px}
+.map-playback .row button{min-height:48px}.map-playback #geo-play{background:#26745f;color:#fff;border-color:#26745f;min-width:108px}
+.map-playback #geo-speed{height:48px;min-width:82px;font-size:16px;border-radius:10px;border:1px solid #c9d9d2;background:#fff;padding:8px;color:#23453c}
+.playback-meta{font-size:12px;color:#466b5e;line-height:1.6;margin:4px 0 8px;font-variant-numeric:tabular-nums}
+.import-panel{padding:0 12px}.import-panel summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-size:13px;color:#27614d;font-weight:700;list-style-position:inside}
+.import-panel[open]{padding-bottom:12px}.import-panel .map-note{margin:7px 0 10px}
+.timeline-day-panel{background:#fff;border:1px solid #dae7df;border-radius:11px;padding:11px;margin:10px 0}
+.timeline-day-panel .control{font-size:16px}
 </style>
 </head>
 <body>
@@ -38,7 +47,7 @@ window.TravelModeMeta=Object.freeze({
 });
 </script>
 <main>
-<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.2.5 迷子ログ（単体版）</span></h1><p class="intro">実地図・会場図の手描きに加え、GPX／GeoJSONの移動記録を取り込めます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
+<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.2.7 迷子ログ（単体版）</span></h1><p class="intro">実地図・会場図の手描きに加え、Googleタイムライン／GPX／GeoJSONを取り込めます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
 <div class="panel stack">
   <div class="row between"><h2>旅を選ぶ</h2><button id="new-trip">＋ 新しい旅</button></div>
   <select id="trip-select" class="control" aria-label="旅の切り替え"><option>読み込み中…</option></select>
@@ -69,21 +78,29 @@ window.TravelModeMeta=Object.freeze({
   </div>
   <p class="map-attribution">地図：© OpenStreetMap contributors（オンライン表示）。描いた経路は地図画像の読み込みに関係なく表示・保存し、自動送信しません。</p>
   <div class="row" style="margin-top:9px"><button id="geo-zoom-out">−</button><button id="geo-zoom-in">＋</button><button id="geo-center">池袋へ</button><button id="geo-fit">経路全体</button><button id="geo-retry" style="display:none">地図を再読み込み</button><span class="map-stats" id="geo-count">0区間・0地点</span></div>
+  <div class="map-playback"><div class="row between"><b style="font-size:13px">描いた経路を再生</b><span id="geo-percent" class="tiny">0%</span></div><p class="playback-meta" id="geo-playback-info" aria-live="polite">距離と移動手段から再生時間を計算します</p><input id="geo-slider" type="range" min="0" max="1000" value="0" aria-label="経路再生位置"><div class="row"><button id="geo-play">▶ 再生</button><button id="geo-reset">↺ 最初から</button><select id="geo-speed" aria-label="再生速度"><option value="1">1倍</option><option value="3" selected>3倍</option><option value="8">8倍</option></select></div></div>
+
   <div class="row" style="margin-top:9px"><button id="geo-next">↳ 次は別の区間</button><button id="geo-merge-near">近い線をまとめる</button><button id="geo-merge-last">直前の2本をつなぐ</button><button id="geo-undo">↶ 戻す</button><button id="geo-redo">↷ やり直す</button><button id="geo-clear" class="danger">全経路を削除</button></div>
   <details class="segment-editor"><summary>経路を確認・修正（実地図）</summary><div id="geo-segment-list" class="segment-list"><p class="segment-empty">まだ経路がありません</p></div></details>
-  <section class="import-panel" aria-labelledby="external-import-title">
-    <h3 id="external-import-title">ほかのアプリの移動記録を取り込む</h3>
-    <p class="map-note" style="margin:0 0 9px">GPX / GeoJSON を読み込みます。iPhoneで記録したデータをあとから追加できます。読み込み時にサーバー送信はしません。</p>
-    <label class="file-picker">＋ GPSログを選ぶ<input id="geo-import-file" type="file" accept=".gpx,.geojson,.json,application/gpx+xml,application/geo+json,application/json,text/xml"></label>
+  <details class="import-panel" id="external-import-panel">
+    <summary id="external-import-title">＋ 移動履歴を取り込む（Googleタイムライン・GPX）</summary>
+    <p class="map-note" style="margin:0 0 9px">Googleマップ → 設定 → 個人的なコンテンツ → タイムライン データをエクスポート →「ファイルに保存」。その「location-history.json」またはGPX・GeoJSONを選びます。ファイルは端末内だけで処理し、地図画像の表示には通信を使います。</p>
+    <label class="file-picker">＋ 移動履歴ファイルを選ぶ<input id="geo-import-file" type="file" accept=".gpx,.geojson,.json,application/gpx+xml,application/geo+json,application/json,text/xml"></label>
+    <div id="timeline-day-panel" class="timeline-day-panel" hidden>
+      <label for="timeline-day">取り込みたい日付（1日ずつ）</label>
+      <input id="timeline-day" type="date" class="control" style="max-width:250px">
+      <p id="timeline-day-note" class="tiny" style="margin:6px 0 0"></p>
+      <button type="button" id="timeline-refresh" style="margin-top:7px">この日を確認</button>
+    </div>
     <div id="geo-import-preview" class="import-preview" hidden aria-live="polite"></div>
     <div id="geo-import-actions" class="import-actions" hidden>
       <button id="geo-import-add" class="primary">この旅に追加</button>
       <button id="geo-import-new">新しい旅として保存</button>
       <button id="geo-import-cancel">やめる</button>
     </div>
-    <p class="tiny" style="margin:8px 0 0">取り込み前に件数を確認できます。別々の記録は自動接続しません。写真や位置情報を勝手に取得する機能ではありません。</p>
-  </section>
-  <div class="map-playback"><div class="row between"><b style="font-size:13px">描いた経路を再生</b><span id="geo-percent" class="tiny">0%</span></div><input id="geo-slider" type="range" min="0" max="1000" value="0" aria-label="経路再生位置"><div class="row"><button id="geo-play">▶ 再生</button><button id="geo-reset">↺ 最初から</button><select id="geo-speed" aria-label="再生速度"><option value="1">1倍</option><option value="3" selected>3倍</option><option value="8">8倍</option></select><a href="./demo.html" class="tiny">乗り物デモを見る</a></div></div>
+    <p class="tiny" style="margin:8px 0 0">Googleタイムラインは日付ごとに確認してから追加します。GPSの記録されていない場所を、勝手に直線で補いません。元ファイルは変更しません。</p>
+  </details>
+
   <p class="notice" id="geo-status" role="status" aria-live="polite">地図上に線を描いてみてください。経路は旅ごとに保存します。</p>
 </section>
 <section id="venue-panel" class="panel" role="tabpanel" aria-labelledby="tab-venue" hidden style="display:none">
@@ -112,7 +129,7 @@ window.TravelModeMeta=Object.freeze({
   <div class="status" id="status" role="status" aria-live="polite">準備中です…</div>
   <p class="image-note">旅データと画像は、通常はこの端末のブラウザ内に保存します。画像はJSONに埋め込まず別管理し、バックアップ時だけまとめます。Safariのデータを削除すると消える場合があるため、定期的にバックアップを書き出してください。</p>
 </div>
-<div class="blueprint"><b>今できること：</b>実地図・館内図の切り替え、どちらにも移動手段つきのフリーハンド描画、タップ追加、2本指拡大・移動、近い線の自動接続と手動結合、区間分け、線の削除、旅ごとの保存・復元、旧Ver.1.0データの引き継ぎ。<br><b>まだできないこと：</b>画面を閉じた間の自動GPS記録、GPSデータの取り込み、道路に沿う自動補正。移動手段は現在手動で指定します。実地図の表示にはネット通信を使います。</div>
+<div class="blueprint"><b>今できること：</b>実地図・館内図の切り替え、どちらにも移動手段つきのフリーハンド描画、タップ追加、2本指拡大・移動、近い線の自動接続と手動結合、区間分け、線の削除、旅ごとの保存・復元、旧Ver.1.0データの引き継ぎ。<br><b>まだできないこと：</b>画面を閉じた間の自動GPS記録、道路に沿う自動補正。移動手段は現在手動で指定します。実地図の表示にはネット通信を使います。</div>
 </main>
 <script>
 (()=>{'use strict';
@@ -138,7 +155,7 @@ async function get(store,id){if(!db)return memoryStore[store].get(id);const tx=d
 async function all(store){if(!db)return [...memoryStore[store].values()];const tx=db.transaction(store,'readonly');return request(tx,{store,kind:'getAll',args:[]})}
 async function remove(store,id){if(!db){memoryStore[store].delete(id);return}const tx=db.transaction(store,'readwrite');const done=txDone(tx);tx.objectStore(store).delete(id);await done}
 function freshTrip(name='AGF2026 迷子ログ'){const now=new Date().toISOString();return {version:2,id:uid(),title:name,dateText:'2026/11/7〜8',memo:'',segments:[],geoSegments:[],mapView:{center:[139.7146,35.7292],zoom:15.4},assetId:null,baseWidth:1000,baseHeight:750,createdAt:now,updatedAt:now}}
-function safeTrip(t){const out=freshTrip();out.id=typeof t.id==='string'?t.id:uid();out.title=String(t.title||'名前のない旅').slice(0,150);out.dateText=String(t.dateText||'').slice(0,80);out.memo=String(t.memo||'').slice(0,50000);out.createdAt=t.createdAt||new Date().toISOString();out.updatedAt=t.updatedAt||new Date().toISOString();out.assetId=typeof t.assetId==='string'?t.assetId:null;out.baseWidth=qs(+t.baseWidth||1000,100,20000);out.baseHeight=qs(+t.baseHeight||750,100,20000);out.segments=(Array.isArray(t.segments)?t.segments:[]).slice(0,10000).map(s=>({id:s.id||uid(),mode:validMode(s.mode),source:['hand','tap','gps','import','photo'].includes(s.source)?s.source:'hand',breakBefore:s.breakBefore===true,points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.x)&&Number.isFinite(+p.y)).map(p=>({x:qs(+p.x,0,1),y:qs(+p.y,0,1)}))})).filter(s=>s.points.length);out.geoSegments=(Array.isArray(t.geoSegments)?t.geoSegments:[]).slice(0,10000).map(s=>({id:typeof s.id==='string'?s.id:uid(),mode:validMode(s.mode),source:['hand','tap','gps','import','photo'].includes(s.source)?s.source:'hand',label:String(s.label||'').slice(0,120),originFile:String(s.originFile||'').slice(0,180),breakBefore:s.breakBefore===true,points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.lng)&&Number.isFinite(+p.lat)&&Math.abs(+p.lng)<=180&&Math.abs(+p.lat)<=85).map(p=>({...{lng:+p.lng,lat:+p.lat},...(typeof p.time==='string'&&!Number.isNaN(Date.parse(p.time))?{time:new Date(p.time).toISOString()}:{})}))})).filter(s=>s.points.length);
+function safeTrip(t){const out=freshTrip();out.id=typeof t.id==='string'?t.id:uid();out.title=String(t.title||'名前のない旅').slice(0,150);out.dateText=String(t.dateText||'').slice(0,80);out.memo=String(t.memo||'').slice(0,50000);out.createdAt=t.createdAt||new Date().toISOString();out.updatedAt=t.updatedAt||new Date().toISOString();out.assetId=typeof t.assetId==='string'?t.assetId:null;out.baseWidth=qs(+t.baseWidth||1000,100,20000);out.baseHeight=qs(+t.baseHeight||750,100,20000);out.segments=(Array.isArray(t.segments)?t.segments:[]).slice(0,10000).map(s=>({id:s.id||uid(),mode:validMode(s.mode),source:['hand','tap','gps','import','photo'].includes(s.source)?s.source:'hand',breakBefore:s.breakBefore===true,points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.x)&&Number.isFinite(+p.y)).map(p=>({x:qs(+p.x,0,1),y:qs(+p.y,0,1)}))})).filter(s=>s.points.length);out.geoSegments=(Array.isArray(t.geoSegments)?t.geoSegments:[]).slice(0,10000).map(s=>({id:typeof s.id==='string'?s.id:uid(),mode:validMode(s.mode),source:['hand','tap','gps','import','photo'].includes(s.source)?s.source:'hand',label:String(s.label||'').slice(0,120),originFile:String(s.originFile||'').slice(0,180),importKey:String(s.importKey||'').slice(0,180),breakBefore:s.breakBefore===true,points:(Array.isArray(s.points)?s.points:[]).slice(0,20000).filter(p=>Number.isFinite(+p.lng)&&Number.isFinite(+p.lat)&&Math.abs(+p.lng)<=180&&Math.abs(+p.lat)<=85).map(p=>({...{lng:+p.lng,lat:+p.lat},...(typeof p.time==='string'&&!Number.isNaN(Date.parse(p.time))?{time:new Date(p.time).toISOString()}:{})}))})).filter(s=>s.points.length);
 const v=t.mapView||{};out.mapView={center:Array.isArray(v.center)&&v.center.length===2&&Number.isFinite(+v.center[0])&&Number.isFinite(+v.center[1])&&Math.abs(+v.center[0])<=180&&Math.abs(+v.center[1])<=85?[+v.center[0],+v.center[1]]:[139.7146,35.7292],zoom:qs(Number.isFinite(+v.zoom)?+v.zoom:15.4,2,20)};return out}
 function saveSoon(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveCurrent(false),550)}
 async function saveCurrent(notify){if(!current)return;clearTimeout(saveTimer);saveTimer=0;current.updatedAt=new Date().toISOString();const saved=clone(current);try{await put('trips',saved);const ix=trips.findIndex(t=>t.id===saved.id);if(ix>=0)trips[ix]=saved;else trips.push(saved);trips.sort((a,b)=>String(b.updatedAt).localeCompare(String(a.updatedAt)));fillTrips(saved.id);if(notify)status(persistent?'この端末に保存しました。':'この画面では一時保存のみです。必ずバックアップを書き出してください。',!persistent)}catch(e){status('端末への保存に失敗しました。バックアップを書き出してください：'+e.message,true)}}
@@ -308,9 +325,48 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
   let pending = null, dragStart = null, pinch = null, usedMulti = false;
   let forcedNew = false, undos = [], redos = [];
   let playing = false, progress = 0, frame = null, lastFrame = null;
+  // Real-map playback uses route length and transport type. 1x is a ~60x time-lapse,
+  // not a claim of actual travel duration; imported timestamps aren't used here.
+  const TYPICAL_MPS = {walk:1.35,train:16.7,car:11.1,bus:6.1,bicycle:4.2,unknown:2.5};
+  let playbackLegs = [], playbackSeconds = 0, playbackMeters = 0, playbackTravelSeconds = 0;
+  function segmentMeters(a,b){
+    const r=Math.PI/180, p1=a.lat*r, p2=b.lat*r, dp=(b.lat-a.lat)*r, dl=(b.lng-a.lng)*r;
+    const h=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;
+    return 12742000*Math.asin(Math.min(1,Math.sqrt(Math.max(0,h))));
+  }
+  function replaySpeed(){return Math.max(.1,Number($('geo-speed').value)||1)}
+  function replayDuration(){return playbackLegs.length?Math.max(1.2,playbackSeconds/replaySpeed()):0}
+  function durationLabel(sec){
+    if(!Number.isFinite(sec)||sec<=0)return '—';
+    const n=Math.max(1,Math.ceil(sec));
+    return `${Math.floor(n/60)}:${String(n%60).padStart(2,'0')}`;
+  }
+  function lengthLabel(m){return m<1000?`${Math.round(m)} m`:`${(m/1000).toLocaleString('ja-JP',{maximumFractionDigits:1})} km`}
+  function playbackInfo(){
+    $('geo-playback-info').textContent=playbackLegs.length
+      ?`経路 ${lengthLabel(playbackMeters)} ／ 再生 約${durationLabel(replayDuration())}（${replaySpeed()}倍・移動手段別の目安）`
+      :'経路を描くか読み込むと、距離に合わせて再生時間を計算します。';
+  }
+  function rebuildPlayback(){
+    const legs=[];let total=0,metersTotal=0;
+    for(const seg of segments()){
+      const pace=TYPICAL_MPS[validMode(seg.mode)]||TYPICAL_MPS.unknown;
+      for(let i=1;i<seg.points.length;i++){
+        const a=seg.points[i-1],b=seg.points[i],meters=segmentMeters(a,b);
+        if(!Number.isFinite(meters)||meters<.01)continue;
+        const seconds=meters/pace;
+        legs.push({a,b,start:total,end:total+seconds});
+        total+=seconds;metersTotal+=meters;
+      }
+    }
+    playbackLegs=legs;playbackTravelSeconds=total;playbackSeconds=total/60;playbackMeters=metersTotal;
+    playbackInfo();
+  }
+
   let totalTileFailures = 0, totalTileSuccesses = 0;
   let selectedSegmentId = null;
   let pendingImport = null;
+  let pendingTimeline = null;
 
   function setStatus(s, error = false) {
     $('geo-status').textContent = s;
@@ -421,28 +477,14 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
     }
   }
   function calculatePlaybackPoint() {
-    const pairs = [];
-    let total = 0;
-    for (const s of segments()) {
-      for (let i = 1; i < s.points.length; i++) {
-        const a = s.points[i - 1], b = s.points[i];
-        const dx = (a.lng - b.lng) * Math.cos((a.lat + b.lat) * Math.PI / 360);
-        const dy = a.lat - b.lat;
-        const len = Math.hypot(dx, dy);
-        pairs.push({a, b, len}); total += len;
-      }
-    }
-    if (!pairs.length) return null;
-    let traveled = total * progress;
-    for (let i = 0; i < pairs.length; i++) {
-      const seg = pairs[i];
-      if (traveled <= seg.len || i === pairs.length - 1) {
-        const t = seg.len ? clamp(traveled / seg.len, 0, 1) : 0;
-        return {lng: seg.a.lng + (seg.b.lng - seg.a.lng) * t, lat: seg.a.lat + (seg.b.lat - seg.a.lat) * t};
-      }
-      traveled -= seg.len;
-    }
-    return null;
+    if(!playbackLegs.length)return null;
+    const target=playbackTravelSeconds*progress;
+    // Binary search lets large GPX tracks replay without walking every point per frame.
+    let lo=0,hi=playbackLegs.length-1;
+    while(lo<hi){const mid=(lo+hi)>>1;if(playbackLegs[mid].end<target)lo=mid+1;else hi=mid}
+    const leg=playbackLegs[lo];
+    const t=clamp((target-leg.start)/Math.max(.000001,leg.end-leg.start),0,1);
+    return {lng:leg.a.lng+(leg.b.lng-leg.a.lng)*t,lat:leg.a.lat+(leg.b.lat-leg.a.lat)*t};
   }
   function paint() {
     resizeCanvas();
@@ -515,6 +557,7 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
     $('geo-reset').disabled = $('geo-play').disabled;
     $('geo-slider').disabled = $('geo-play').disabled;
     fillGeoSegments();
+    rebuildPlayback();
   }
   function fillGeoSegments(){
     const el=$('geo-segment-list');el.replaceChildren();
@@ -716,7 +759,7 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
   }
   function animate(time){
     if(!playing)return;
-    if(lastFrame!==null)setProgress(progress+(time-lastFrame)*Number($('geo-speed').value)/16000);
+    if(lastFrame!==null)setProgress(progress+(time-lastFrame)/(Math.max(1,replayDuration())*1000));
     lastFrame=time;
     if(progress>=1){stopPlayback();return}
     frame=requestAnimationFrame(animate);
@@ -749,8 +792,8 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
     center=[c.lng,c.lat];redraw();persistView();
   }
   function fitRoute(){fitRoutePoints(segments().flatMap(s=>s.points))}
-  // GPX and GeoJSON are parsed entirely in the browser. No upload or remote API.
-  const IMPORT_MAX_BYTES=12*1024*1024, IMPORT_MAX_POINTS=65000, IMPORT_MAX_SEGMENTS=1500;
+  // All import formats are parsed entirely in the browser. No upload or remote API.
+  const IMPORT_MAX_BYTES=40*1024*1024, IMPORT_MAX_POINTS=65000, IMPORT_MAX_SEGMENTS=1500;
   function readPoint(lng,lat,time){
     const x=Number(lng),y=Number(lat);
     if(!Number.isFinite(x)||!Number.isFinite(y)||x < -180||x > 180||y < -85||y > 85)return null;
@@ -822,17 +865,180 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
     const total=found.reduce((n,s)=>n+s.points.length,0);
     return {segments:found,total,originalTotal:accepted,filename:file.name};
   }
-  function importReset(){pendingImport=null;$('geo-import-preview').hidden=true;$('geo-import-actions').hidden=true;$('geo-import-file').value=''}
+  // Google Timeline exports differ on iOS (top-level array, geo: coordinates), Android
+  // (semanticSegments object, degree-marked coordinates), and legacy Takeout.
+  // Work on only ONE selected day; never merge the user's full history by accident.
+  const localDay = iso => typeof iso==='string'&&/^\d{4}-\d\d-\d\d/.test(iso)?iso.slice(0,10):'';
+  function parseGoogleCoordinate(raw){
+    if(raw==null)return null;
+    if(Array.isArray(raw)&&raw.length>=2){const a=Number(raw[0]),b=Number(raw[1]);return readPoint(b,a)}
+    if(typeof raw==='object'){
+      if(raw.latLng!=null)return parseGoogleCoordinate(raw.latLng);
+      if(raw.location!=null)return parseGoogleCoordinate(raw.location);
+      if(raw.latitudeE7!=null&&raw.longitudeE7!=null)return readPoint(e7(raw.longitudeE7,180),e7(raw.latitudeE7,90));
+      if(raw.centerLatE7!=null&&raw.centerLngE7!=null)return readPoint(e7(raw.centerLngE7,180),e7(raw.centerLatE7,90));
+      if(raw.lat!=null&&raw.lng!=null)return readPoint(raw.lng,raw.lat);
+      if(raw.latitude!=null&&raw.longitude!=null)return readPoint(raw.longitude,raw.latitude);
+      return null;
+    }
+    const s=String(raw).trim().replace(/^geo:/i,'').replace(/°/g,'').replace(/\s/g,'');
+    const m=s.match(/^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:,.*)?$/);
+    return m?readPoint(m[2],m[1]):null;
+  }
+  function e7(raw,limit){let n=Number(raw);if(!Number.isFinite(n))return NaN;if(n>limit*1e7)n-=4294967296;return n/1e7}
+  function timelineMode(value){
+    const v=String(value||'').toUpperCase().replace(/[^A-Z]/g,'_');
+    if(/WALK|ON_FOOT|RUNNING/.test(v))return 'walk';
+    if(/TRAIN|RAIL|SUBWAY|TRAM|METRO/.test(v))return 'train';
+    if(/BUS/.test(v))return 'bus';
+    if(/BICYCL|CYCL|BIKING/.test(v))return 'bicycle';
+    if(/CAR|DRIVING|PASSENGER_VEHICLE|MOTORCYCL|TAXI/.test(v))return 'car';
+    return 'unknown';
+  }
+  function classifyTimeline(obj){
+    if(Array.isArray(obj))return obj.some(s=>s&&typeof s.startTime==='string'&&(s.visit||s.activity||s.timelinePath))?{kind:'iOS',rows:obj}:null;
+    if(!obj||typeof obj!=='object')return null;
+    if(Array.isArray(obj.semanticSegments))return {kind:'Google',rows:obj.semanticSegments};
+    if(Array.isArray(obj.timelineObjects))return {kind:'旧Takeout',rows:obj.timelineObjects};
+    return null;
+  }
+  function getRowTime(row){return row?.startTime||row?.duration?.startTimestamp||''}
+  function endRowTime(row){return row?.endTime||row?.duration?.endTimestamp||''}
+  function pathItems(row){
+    const path=row?.timelinePath||row?.activitySegment?.simplifiedRawPath?.points||row?.activitySegment?.waypointPath?.waypoints;
+    return Array.isArray(path)?path:Array.isArray(path?.points)?path.points:[];
+  }
+  function dayAtSourceOffset(timestamp,anchor){
+    const suffix=String(anchor||'').match(/([+-])(\d{2}):(\d{2})$/);
+    const minutes=suffix?(suffix[1]==='-'?-1:1)*(Number(suffix[2])*60+Number(suffix[3])):0;
+    return new Date(timestamp+minutes*60000).toISOString().slice(0,10);
+  }
+  function timedPoint(raw,row){
+    const pt=parseGoogleCoordinate(raw?.point??raw?.location??raw);if(!pt)return null;
+    let t=raw?.time||raw?.timestamp||raw?.timestampMs||'';
+    const offset=Number(raw?.durationMinutesOffsetFromStartTime);
+    if(!t&&raw?.durationMinutesOffsetFromStartTime!=null&&Number.isFinite(offset)&&offset>=0&&offset<=14400&&Number.isFinite(Date.parse(getRowTime(row)))){
+      t=new Date(Date.parse(getRowTime(row))+offset*60000).toISOString();
+    }
+    if(typeof t==='number')t=new Date(t>1e12?t:t*1000).toISOString();
+    const timestamp=t?Date.parse(t):NaN;
+    if(Number.isFinite(timestamp))pt.time=new Date(timestamp).toISOString();
+    pt._day=Number.isFinite(timestamp)?dayAtSourceOffset(timestamp,getRowTime(row)):localDay(getRowTime(row));
+    return pt;
+  }
+  function timelineDates(rows){
+    const dates=new Set();
+    for(const row of rows){
+      const begin=localDay(getRowTime(row)),finish=localDay(endRowTime(row));
+      if(begin)dates.add(begin);if(finish)dates.add(finish);
+    }
+    return [...dates].sort();
+  }
+  function timelineDay(file,model,day){
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(day))throw Error('日付を選択してください。');
+    const rows=model.rows;const actions=[];const crumbs=[];const visits=[];
+    for(let i=0;i<rows.length;i++){
+      const row=rows[i];if(!row||typeof row!=='object')continue;
+      const start=getRowTime(row),end=endRowTime(row),sd=localDay(start),ed=localDay(end);
+      const relevant=sd===day||ed===day||(start&&end&&start.slice(0,10)<day&&end.slice(0,10)>day);
+      if(!relevant)continue;
+      const activity=row.activity||row.activitySegment;
+      if(activity){actions.push({activity,start:Date.parse(start),end:Date.parse(end),index:i,raw:row})}
+      const crumbsList=pathItems(row);
+      if(crumbsList.length){
+        let pts=crumbsList.map(c=>timedPoint(c,row)).filter(Boolean).filter(p=>p._day===day);
+        if(pts.length)crumbs.push({index:i,pts,activity,raw:row});
+      }
+      const place=row.visit?.topCandidate?.placeLocation||row.placeVisit?.location||row.visit?.location;
+      if(place){const point=parseGoogleCoordinate(place);if(point&&sd===day)visits.push({index:i,point,time:start});}
+    }
+    const output=[];let count=0,details=0,approx=0,stops=0;
+    const make=(pts,mode,label,key)=>{
+      if(!pts.length)return;
+      count+=pts.length;if(count>IMPORT_MAX_POINTS)throw Error('選択日の地点が65,000点を超えています。');
+      if(output.length>=IMPORT_MAX_SEGMENTS)throw Error('選択日の区間が1,500件を超えています。');
+      const clean=pts.map(p=>{const v={lng:p.lng,lat:p.lat};if(p.time)v.time=p.time;return v});
+      output.push({id:uid(),mode,source:'import',breakBefore:true,label,originFile:file.name.slice(0,180),importKey:'google:'+model.kind+':'+day+':'+key,points:clean,_order:Number(String(key).split(':')[0])||0,_end:String(key).endsWith(':end')?1:0});
+    };
+    const actionMatch=(row,time)=>{
+      const own=row.activity||row.activitySegment;
+      if(own)return timelineMode(own.topCandidate?.type||own.activityType||own.type);
+      const ms=Date.parse(time);
+      if(Number.isNaN(ms))return 'unknown';
+      const a=actions.find(a=>Number.isFinite(a.start)&&Number.isFinite(a.end)&&ms>=a.start-600000&&ms<=a.end+600000);
+      return timelineMode(a?.activity?.topCandidate?.type||a?.activity?.activityType||a?.activity?.type);
+    };
+    const activityCovered=new Set();
+    for(const cr of crumbs){
+      const first=cr.pts[0],mode=actionMatch(cr.raw,first.time||getRowTime(cr.raw));
+      const firstDate=Date.parse(first.time||getRowTime(cr.raw));
+      actions.forEach(a=>{if(Number.isFinite(firstDate)&&Number.isFinite(a.start)&&Number.isFinite(a.end)&&firstDate>=a.start-600000&&firstDate<=a.end+600000)activityCovered.add(a.index)});
+      let group=[],part=0;
+      const flush=()=>{if(!group.length)return;make(group,mode,'Googleタイムラインの経路',cr.index+':path:'+part++);details+=group.length;group=[]};
+      for(const p of cr.pts){
+        if(group.length){const prev=group.at(-1),gap=(p.time&&prev.time)?Date.parse(p.time)-Date.parse(prev.time):0;
+          if((gap>90*60000&&segmentMeters(prev,p)>800)||segmentMeters(prev,p)>100000){flush();}
+        }
+        group.push(p);
+      }
+      flush();
+    }
+    for(const a of actions){
+      if(activityCovered.has(a.index))continue;
+      const startPt=parseGoogleCoordinate(a.activity?.start||a.raw?.activitySegment?.startLocation);
+      const endPt=parseGoogleCoordinate(a.activity?.end||a.raw?.activitySegment?.endLocation);
+      const mode=timelineMode(a.activity?.topCandidate?.type||a.activity?.activityType||a.activity?.type);
+      // No observed track. Preserve endpoints as independent POINTS, never fabricate a straight route.
+      if(startPt&&localDay(getRowTime(a.raw))===day){make([startPt],mode,'移動開始（詳しい経路なし）',a.index+':start');approx++}
+      if(endPt&&localDay(endRowTime(a.raw)||getRowTime(a.raw))===day){make([endPt],mode,'移動終了（詳しい経路なし）',a.index+':end');approx++}
+    }
+    for(const v of visits){
+      make([v.point],'unknown','訪問地点（推定）',v.index+':visit');stops++;
+    }
+    // Restore source chronology: paths, endpoint markers, and visits share the same timeline.
+    output.sort((a,b)=>a._order-b._order||a._end-b._end);
+    output.forEach(o=>{delete o._order;delete o._end});
+    if(!output.length)throw Error('この日の位置データは見つかりませんでした。日付を変更するか、Googleマップで記録状況を確認してください。');
+    return {segments:output,total:count,originalTotal:count,filename:file.name,day,kind:'timeline',stats:{details,approx,stops},format:model.kind};
+  }
+  function renderImportPreview(){
+    if(!pendingTimeline)return;
+    const day=$('timeline-day').value;
+    try{
+      pendingImport=timelineDay(pendingTimeline.file,pendingTimeline.model,day);
+      const st=pendingImport.stats;
+      $('geo-import-preview').textContent=`${day} の記録：${pendingImport.segments.length}区間・${pendingImport.total}地点。経路の詳細 ${st.details}地点、経路不明の開始・終了 ${st.approx}地点、訪問先 ${st.stops}地点。経路不明の区間は勝手に線で結びません。Google側の推定移動手段も取り込みます。`;
+      $('geo-import-actions').hidden=false;
+      $('geo-import-preview').hidden=false;
+      setStatus('日付と地点数を確認してから取り込んでください。');
+    }catch(err){pendingImport=null;$('geo-import-actions').hidden=true;$('geo-import-preview').hidden=false;$('geo-import-preview').textContent=err.message;setStatus(err.message,true)}
+  }
+  function importReset(){pendingImport=null;pendingTimeline=null;$('timeline-day-panel').hidden=true;$('geo-import-preview').hidden=true;$('geo-import-actions').hidden=true;$('geo-import-file').value=''}
+  $('timeline-refresh').addEventListener('click',renderImportPreview);
+  $('timeline-day').addEventListener('change',renderImportPreview);
   $('geo-import-file').addEventListener('change',async e=>{
     const f=e.target.files?.[0];if(!f)return;
     importReset();
-    if(f.size>IMPORT_MAX_BYTES){setStatus('GPSログは12MB以内のファイルを選んでください。',true);return}
+    if(f.size>IMPORT_MAX_BYTES){setStatus('移動履歴は40MB以内のJSON／GPXを選んでください。大きいファイルは端末で処理できない可能性があります。',true);return}
     try{
-      pendingImport=parseGPSFile(f,await f.text());
+      const text=await f.text();
+      if(text.trimStart().startsWith('{')||text.trimStart().startsWith('[')){
+        const obj=JSON.parse(text);const model=classifyTimeline(obj);
+        if(model){
+          const days=timelineDates(model.rows);if(!days.length)throw Error('日付のあるタイムライン記録がありません。');
+          pendingTimeline={file:f,model};
+          $('timeline-day-panel').hidden=false;
+          $('timeline-day').min=days[0];$('timeline-day').max=days.at(-1);
+          $('timeline-day').value=days.at(-1);
+          $('timeline-day-note').textContent='Googleタイムライン（'+model.kind+'形式）を認識しました。記録日の範囲：'+days[0]+' ～ '+days.at(-1)+'。読み込みたい1日を指定してください。';
+          renderImportPreview();return;
+        }
+      }
+      pendingImport=parseGPSFile(f,text);
       $('geo-import-preview').textContent='読み込み準備OK：'+pendingImport.filename+' ／ '+pendingImport.segments.length+'区間・'+pendingImport.total+'地点'+(pendingImport.originalTotal>pendingImport.total?'（元データ'+pendingImport.originalTotal+'地点を表示用に軽量化）':'')+'。移動手段は「不明」で読み込みます。既存の線は消しません。';
       $('geo-import-preview').hidden=false;$('geo-import-actions').hidden=false;
       setStatus('内容を確認して、取り込み先を選んでください。');
-    }catch(err){setStatus('GPSログを読み込めません：'+err.message,true)}
+    }catch(err){setStatus('移動履歴を読み込めません：'+err.message,true)}
   });
   $('geo-import-cancel').addEventListener('click',()=>{importReset();setStatus('取り込みを取り消しました。')});
   async function commitImport(asNew){
@@ -843,15 +1049,18 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
       if(asNew){
         await BR()?.save(false);
         const now=new Date().toISOString();
-        const newTrip={...clone(oldTrip),id:uid(),title:data.filename.replace(/\.(gpx|geojson|json)$/i,'').slice(0,150)||'GPS取り込み',dateText:'',memo:'',segments:[],geoSegments:clone(data.segments),assetId:null,createdAt:now,updatedAt:now};
+        const newTrip={...clone(oldTrip),id:uid(),title:data.kind==='timeline'?'Googleタイムライン '+data.day:data.filename.replace(/\.(gpx|geojson|json)$/i,'').slice(0,150)||'GPS取り込み',dateText:data.day||'',memo:'',segments:[],geoSegments:clone(data.segments),assetId:null,createdAt:now,updatedAt:now};
         // The main app owns the trips list, and exposes a safe creation method.
         await BR()?.addTrip(newTrip);
         fitRoutePoints(data.segments.flatMap(s=>s.points));
       }else{
-        snapshot();trip().geoSegments.push(...clone(data.segments));saved();
+        const existing=new Set(trip().geoSegments.map(s=>s.importKey).filter(Boolean));
+        const unique=data.segments.filter(s=>!s.importKey||!existing.has(s.importKey));
+        if(!unique.length){setStatus('この日の同じ記録はすでに取り込まれています。重複追加はしません。');importReset();return;}
+        snapshot();trip().geoSegments.push(...clone(unique));saved();
         fitRoutePoints(data.segments.flatMap(s=>s.points));
       }
-      importReset();setStatus(data.segments.length+'区間・'+data.total+'地点を取り込みました。移動手段は区間一覧で変更できます。');
+      importReset();setStatus(data.segments.length+'区間を取り込みました。詳細がない場所は線を補わず、点として表示します。');
     }catch(err){setStatus('取り込みに失敗しました：'+err.message,true)}
     finally{$('geo-import-add').disabled=$('geo-import-new').disabled=false}
   }
@@ -887,6 +1096,7 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,ad
   });
   $('geo-reset').addEventListener('click',()=>{stopPlayback();setProgress(0)});
   $('geo-slider').addEventListener('input',()=>{stopPlayback();setProgress(Number($('geo-slider').value)/1000)});
+  $('geo-speed').addEventListener('change',playbackInfo);
   for(const type of ['pointerdown','pointermove','pointerup','pointercancel']){
     const fn={pointerdown:pointerDown,pointermove:pointerMove,pointerup:pointerUp,pointercancel:pointerCancel}[type];
     overlay.addEventListener(type,fn);
