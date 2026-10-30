@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f7f5">
-<title>旅ログ｜Googleタイムライン日付補正 Ver.1.2.9</title>
+<meta name="app-version" content="1.3.0">
+<title>旅ログ｜タイムライン移動手段補正 Ver.1.3.0</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#233b38;background:#f4f7f5;-webkit-text-size-adjust:100%}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer;white-space:nowrap;min-height:44px;border:1px solid #c9d9d2;color:#23453c;background:#fff;border-radius:12px;padding:9px 13px;font-weight:600}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,.file-picker:focus-within{outline:3px solid #6aa8cf;outline-offset:2px}button.primary{color:white;background:#26745f;border-color:#26745f}button.danger{color:#a83e46}button.activated{border-color:#26745f;background:#e2f4ec;color:#145943}a{color:#216d67}main{max-width:800px;margin:0 auto;padding:16px 14px 66px}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;flex-wrap:wrap}h1{font-size:23px;letter-spacing:.02em;margin:0}h2{font-size:17px;margin:0 0 8px}p{line-height:1.55}small,.muted{color:#647b74}small{font-size:12px}.tiny{font-size:11px;color:#667a75}label{font-size:13px;font-weight:650;display:block;margin-bottom:5px}.stack{display:grid;gap:10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.panel{background:white;border:1px solid #e1e8e4;border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 8px #183e2e09}.intro{font-size:13px;color:#5e756e;margin:6px 0 0}.field{min-width:0;flex:1}.field-wide{min-width:180px;flex:2}.control{height:44px;width:100%;border-radius:10px;border:1px solid #c8d9d1;background:#fff;padding:10px;color:#253e37;min-width:0;font-size:16px}textarea.control{height:auto;min-height:85px;resize:vertical;line-height:1.5}.pill{border:1px solid #bad6c6;border-radius:99px;padding:5px 10px;background:#ebf7ef;color:#28634d;font-size:11px;font-weight:650}.tool-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.tool-row button{font-size:13px;padding:7px 4px;min-height:52px;line-height:1.3;white-space:normal;overflow-wrap:anywhere;min-width:0}.editor{position:relative;height:clamp(300px,59vw,540px);background:#e5ece7;border:1px solid #b6cfc1;border-radius:13px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}.editor canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none}.editor-badge{position:absolute;z-index:1;top:10px;left:10px;max-width:calc(100% - 20px);padding:7px 10px;background:#fffef3ee;border-radius:9px;box-shadow:0 1px 4px #0001;font-size:12px;font-weight:650;pointer-events:none}.editor-footer{position:absolute;z-index:1;bottom:8px;right:9px;padding:5px 8px;background:#fffef3de;border-radius:8px;color:#436157;font-size:11px;pointer-events:none}.hint{padding:9px 11px;border-radius:10px;background:#edf6f0;color:#3e6251;font-size:12px;line-height:1.65;margin:8px 0}.notice{margin:8px 0 0;color:#4b6a61;font-size:12px;line-height:1.6}.stats{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0;color:#4b6e62;font-size:12px}.stats b{font-size:14px;color:#245443}.file-picker{display:inline-flex;align-items:center;justify-content:center;background:white;border:1px solid #c9d9d2;border-radius:11px;padding:9px 13px;min-height:44px;font-size:13px;font-weight:650;cursor:pointer;position:relative}.file-picker input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.spacer{flex:1}.status{min-height:35px;border-radius:9px;background:#eff6f1;padding:9px 11px;color:#285848;font-size:12px;line-height:1.55;margin-top:10px}.status.error{background:#fff0e8;color:#994a38}.divider{border:0;border-top:1px solid #e5ede7;margin:14px 0}.subtitle{font-size:13px;color:#57776c;margin:4px 0 10px}.image-note{font-size:12px;color:#617970;line-height:1.6}.blueprint{border-radius:11px;padding:12px;background:#f1f7f7;color:#516c68;font-size:12px}.kbd{background:#e5eee7;padding:2px 6px;border-radius:5px;font-size:11px}.hide{display:none!important}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer;white-space:nowrap;min-height:44px;border:1px solid #c9d9d2;color:#23453c;background:#fff;border-radius:12px;padding:9px 13px;font-weight:600}button:disabled{opacity:.38;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,.file-picker:focus-within{outline:3px solid #6aa8cf;outline-offset:2px}button.primary{color:white;background:#26745f;border-color:#26745f}button.danger{color:#a83e46}button.activated{border-color:#26745f;background:#e2f4ec;color:#145943}a{color:#216d67}main{max-width:800px;margin:0 auto;padding:16px 14px 66px}header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px;flex-wrap:wrap}h1{font-size:23px;letter-spacing:.02em;margin:0}h2{font-size:17px;margin:0 0 8px}p{line-height:1.55}small,.muted{color:#647b74}small{font-size:12px}.tiny{font-size:11px;color:#667a75}label{font-size:13px;font-weight:650;display:block;margin-bottom:5px}.stack{display:grid;gap:10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.panel{background:white;border:1px solid #e1e8e4;border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 2px 8px #183e2e09}.intro{font-size:13px;color:#5e756e;margin:6px 0 0}.field{min-width:0;flex:1}.field-wide{min-width:180px;flex:2}.control{height:44px;width:100%;border-radius:10px;border:1px solid #c8d9d1;background:#fff;padding:10px;color:#253e37;min-width:0;font-size:16px}textarea.control{height:auto;min-height:85px;resize:vertical;line-height:1.5}.pill{border:1px solid #bad6c6;border-radius:99px;padding:5px 10px;background:#ebf7ef;color:#28634d;font-size:11px;font-weight:650}.tool-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.tool-row button{font-size:13px;padding:7px 4px;min-height:52px;line-height:1.3;white-space:normal;overflow-wrap:anywhere;min-width:0}.editor{position:relative;height:clamp(300px,59vw,540px);background:#e5ece7;border:1px solid #b6cfc1;border-radius:13px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}.editor canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none}.editor-badge{position:absolute;z-index:1;top:10px;left:10px;max-width:calc(100% - 20px);padding:7px 10px;background:#fffef3ee;border-radius:9px;box-shadow:0 1px 4px #0001;font-size:12px;font-weight:650;pointer-events:none}.editor-footer{position:absolute;z-index:1;bottom:8px;right:9px;padding:5px 8px;background:#fffef3de;border-radius:8px;color:#436157;font-size:11px;pointer-events:none}.hint{padding:9px 11px;border-radius:10px;background:#edf6f0;color:#3e6251;font-size:12px;line-height:1.65;margin:8px 0}.notice{margin:8px 0 0;color:#4b6a61;font-size:12px;line-height:1.6}.stats{display:flex;gap:9px;flex-wrap:wrap;margin:9px 0;color:#4b6e62;font-size:12px}.stats b{font-size:14px;color:#245443}.file-picker{display:inline-flex;align-items:center;justify-content:center;background:white;border:1px solid #c9d9d2;border-radius:11px;padding:9px 13px;min-height:44px;font-size:13px;font-weight:650;cursor:pointer;position:relative}.file-picker input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}.spacer{flex:1}.status{min-height:35px;border-radius:9px;background:#eff6f1;padding:9px 11px;color:#285848;font-size:12px;line-height:1.55;margin-top:10px}.status.error{background:#fff0e8;color:#994a38}.divider{border:0;border-top:1px solid #e5ede7;margin:14px 0}.subtitle{font-size:13px;color:#57776c;margin:4px 0 10px}.image-note{font-size:12px;color:#617970;line-height:1.6}.blueprint{border-radius:11px;padding:12px;background:#f1f7f7;color:#516c68;font-size:12px}.kbd{background:#e5eee7;padding:2px 6px;border-radius:5px;font-size:11px}.hide{display:none!important}
 @media(max-width:420px){main{padding:13px 10px 50px}.panel{padding:12px}.row.compact button{flex:0 0 auto}.field{flex:1 1 100%}.field-wide{flex:1 1 100%}h1{font-size:20px}.tool-row button{font-size:12px}button{padding:9px 10px}.editor{height:clamp(315px,98vw,480px)}}
 
 /* Real map integration, v1.2 */
 .view-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 12px}.view-tabs button{min-width:0;white-space:normal}.view-tabs button[aria-selected="true"]{border-color:#26745f;background:#26745f;color:white}
-.map-container{height:clamp(315px,66vw,520px);border-radius:13px;position:relative;overflow:hidden;background:#e6ebe5;border:1px solid #c4d5cc}.map-gl{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}.map-overlay{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;z-index:5}.map-badge{position:absolute;z-index:7;pointer-events:none;top:9px;left:9px;right:54px;max-width:max-content;background:#fffef2ed;border-radius:9px;font-size:12px;padding:6px 9px;box-shadow:0 1px 5px #0001}.map-note{font-size:12px;color:#536c62;line-height:1.6}.map-error{position:absolute;z-index:8;top:43px;left:10px;right:10px;padding:11px;background:#fff8eeef;border-radius:9px;color:#92512c;font-size:13px;display:none}.map-tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}.map-tools button{font-size:12px;padding:7px 4px;white-space:normal;min-height:51px;line-height:1.3;min-width:0}.map-stats{font-size:12px;color:#547368}.map-playback{border-top:1px solid #e8efea;margin-top:12px;padding-top:10px}.map-playback input{width:100%;accent-color:#26745f}.map-attribution{color:#62786f;font-size:11px;line-height:1.5}.map-placeholder{padding:18px;text-align:center;color:#60776e;font-size:13px;position:absolute;inset:0;display:grid;place-items:center}.map-container .maplibregl-ctrl-bottom-right,.map-container .maplibregl-ctrl-bottom-left{z-index:4}.map-container .maplibregl-control-container{z-index:9;position:relative}
-@media(max-width:420px){.map-container{height:clamp(315px,99vw,480px)}.map-tools button{font-size:11px}.map-panel{padding:12px}}
+.map-container{height:clamp(315px,66vw,520px);border-radius:13px;position:relative;overflow:hidden;background:#e6ebe5;border:1px solid #c4d5cc}.map-gl{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}.map-overlay{position:absolute;inset:0;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;z-index:5}.map-badge{position:absolute;z-index:7;pointer-events:none;top:9px;left:9px;right:54px;max-width:max-content;background:#fffef2ed;border-radius:9px;font-size:12px;padding:6px 9px;box-shadow:0 1px 5px #0001}.map-note{font-size:12px;color:#536c62;line-height:1.6}.map-error{position:absolute;z-index:8;top:43px;left:10px;right:10px;padding:11px;background:#fff8eeef;border-radius:9px;color:#92512c;font-size:13px;display:none}.map-tools{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.map-tools button{font-size:12px;padding:7px 4px;white-space:normal;min-height:51px;line-height:1.3;min-width:0}.map-stats{font-size:12px;color:#547368}.map-playback{border-top:1px solid #e8efea;margin-top:12px;padding-top:10px}.map-playback input{width:100%;accent-color:#26745f}.map-attribution{color:#62786f;font-size:11px;line-height:1.5}.map-placeholder{padding:18px;text-align:center;color:#60776e;font-size:13px;position:absolute;inset:0;display:grid;place-items:center}.map-container .maplibregl-ctrl-bottom-right,.map-container .maplibregl-ctrl-bottom-left{z-index:4}.map-container .maplibregl-control-container{z-index:9;position:relative}
+@media(max-width:420px){.map-container{height:clamp(315px,99vw,480px)}.map-tools,.tool-row{grid-template-columns:repeat(3,minmax(0,1fr))}.map-tools button{font-size:12px}.map-panel{padding:12px}}
 
 .transport-control{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:10px 0 4px}.transport-control label{margin:0;white-space:nowrap}.transport-control select{max-width:205px;flex:1 1 155px}.transport-legend{font-size:11px;color:#64776d;margin:3px 0 7px;line-height:1.6}.segment-editor{margin:10px 0 4px;border:1px solid #dce7e0;background:#fafdfa;border-radius:11px;padding:8px 10px}.segment-editor summary{font-size:13px;font-weight:650;color:#2b604f;cursor:pointer;padding:4px 0;min-height:29px}.segment-list{display:grid;gap:7px;margin:9px 0 3px;max-height:260px;overflow-y:auto}.segment-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:7px;background:white;border:1px solid #e4ece7;border-radius:9px}.segment-row .swatch{height:19px;width:28px;border-radius:3px;border-top:4px solid;flex:0 0 28px}.segment-row label{font-weight:500;font-size:12px;margin:0;flex:1 1 70px;min-width:65px}.segment-row select{min-width:138px;max-width:175px;flex:1 1 138px}.segment-row .control{height:39px;font-size:14px;padding:6px}.segment-empty{font-size:12px;color:#64776d;margin:4px 0}.transport-key{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:7px 0}.transport-key span{font-size:11px;color:#526960;border:1px solid #dce7df;border-radius:7px;background:#fff;padding:4px 6px}
 
@@ -32,6 +33,15 @@
 .import-panel[open]{padding-bottom:12px}.import-panel .map-note{margin:7px 0 10px}
 .timeline-day-panel{background:#fff;border:1px solid #dae7df;border-radius:11px;padding:11px;margin:10px 0}
 .timeline-day-panel .control{font-size:16px}
+.timeline-mode-editor{background:#fff;border:1px solid #d3e5da;border-radius:11px;padding:12px;margin:10px 0}
+.timeline-mode-editor[hidden]{display:none}.timeline-mode-editor h4{font-size:14px;margin:0;color:#265c4b}
+.timeline-mode-list{display:grid;gap:7px;max-height:310px;overflow-y:auto;margin:9px 0 3px}
+.timeline-mode-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;border:1px solid #e1ebe5;background:#fbfdfa;border-radius:9px;padding:8px}
+.timeline-mode-desc{font-size:12px;line-height:1.45;flex:1 1 160px;min-width:135px}
+.timeline-mode-desc small{display:block;font-size:11px;color:#617970}
+.timeline-mode-row select{flex:0 1 155px;min-width:127px;width:auto;min-height:42px;border:1px solid #c8d9d1;border-radius:9px;font-size:15px;background:white;padding:8px;color:#253e37}
+.timeline-mode-editor .transport-control select{max-width:290px}
+.edit-hint{margin:8px 0 10px}.edit-hint .hint{margin:0}.exit-edit{margin-top:7px;min-height:42px;font-size:13px;border-color:#26745f;color:#236448;background:#f0faf4;white-space:normal;width:100%}.exit-edit[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -47,7 +57,7 @@ window.TravelModeMeta=Object.freeze({
 });
 </script>
 <main>
-<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.2.9 迷子ログ（単体版）</span></h1><p class="intro">実地図・会場図の手描きに加え、Googleタイムライン／GPX／GeoJSONを取り込めます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
+<header><div><h1>旅ログ <span style="font-size:12px;color:#478b74">Ver.1.3.0 迷子ログ（単体版）</span></h1><p class="intro">実地図・会場図の手描きに加え、Googleタイムライン／GPX／GeoJSONを取り込めます</p></div><span id="storage-pill" class="pill">保存機能を確認中</span></header>
 <div class="panel stack">
   <div class="row between"><h2>旅を選ぶ</h2><button id="new-trip">＋ 新しい旅</button></div>
   <select id="trip-select" class="control" aria-label="旅の切り替え"><option>読み込み中…</option></select>
@@ -61,14 +71,15 @@ window.TravelModeMeta=Object.freeze({
   <div class="row between"><h2>実地図と移動経路</h2><span id="geo-zoom" class="tiny">地図を準備中</span></div>
   <p class="subtitle">池袋周辺から始まります。地図を動かして目的地へ移動できます。</p>
   <div class="map-tools" aria-label="実地図の編集モード">
-   <button id="geo-draw" class="activated" aria-pressed="true">✎ 線を描く</button>
+   <button id="geo-browse" class="activated" aria-pressed="true">↕ スクロール</button>
+   <button id="geo-draw" aria-pressed="false">✎ 線を描く</button>
    <button id="geo-tap" aria-pressed="false">＋ 点を置く</button>
    <button id="geo-pan" aria-pressed="false">✥ 地図を動かす</button>
    <button id="geo-erase" aria-pressed="false">⌫ 線を消す</button>
   </div>
   <div class="transport-control"><label for="geo-transport">次に描く移動手段</label><select id="geo-transport" class="control" aria-label="実地図の新しい経路の移動手段"><option value="walk">徒歩</option><option value="train">電車</option><option value="car">車・タクシー</option><option value="bus">バス</option><option value="bicycle">自転車</option><option value="unknown">不明・その他</option></select></div>
   <p class="transport-legend">移動手段を変えると新しい区間として記録します。既存の線は下から変更できます。</p>
-  <p class="hint" id="geo-hint">続きの線は直前の終点付近から描くと自動でつながります。2本指で地図を移動・拡大できます。道路への自動吸着はありません。</p>
+  <div class="edit-hint"><p class="hint" id="geo-hint">閲覧中です。地図上も1本指でページを上下にスクロールできます。描くときは「線を描く」、地図の移動は「地図を動かす」を選んでね。</p><button type="button" id="geo-exit-edit" class="exit-edit" hidden>✓ 編集を終了してスクロール</button></div>
   <div class="map-container" id="map-container">
     <div class="map-gl" id="real-map"></div>
     <div class="map-placeholder" id="map-placeholder">地図画像を読み込み中…</div>
@@ -93,13 +104,19 @@ window.TravelModeMeta=Object.freeze({
       <button type="button" id="timeline-refresh" style="margin-top:7px">この日を確認</button>
     </div>
     <div id="geo-import-preview" class="import-preview" hidden aria-live="polite"></div>
+    <section id="timeline-mode-editor" class="timeline-mode-editor" hidden aria-label="移動手段を取り込み前に確認">
+      <h4>取り込み前に移動手段を確認</h4>
+      <p class="tiny" style="margin:4px 0 8px">Googleの判定を優先し、時刻と距離が不自然な場合は「不明」にします。間違っている区間だけ変更できます。訪問地点は変更しません。</p>
+      <div class="transport-control"><label for="timeline-bulk-mode">移動区間をまとめて変更</label><select id="timeline-bulk-mode" class="control" aria-label="取り込む移動区間の移動手段を一括変更"><option value="keep">Googleの判定を優先（推奨）</option><option value="walk">すべて徒歩</option><option value="train">すべて電車</option><option value="car">すべて車・タクシー</option><option value="bus">すべてバス</option><option value="bicycle">すべて自転車</option><option value="unknown">すべて不明・その他</option></select></div>
+      <div id="timeline-mode-list" class="timeline-mode-list"></div>
+    </section>
     <div id="geo-import-actions" class="import-actions" hidden>
       <button id="geo-import-add" class="primary">この旅に追加</button>
       <button id="geo-import-new">新しい旅として保存</button>
       <button id="geo-import-refresh" hidden>この日のGoogle記録を入れ直す</button>
       <button id="geo-import-cancel">やめる</button>
     </div>
-    <p class="tiny" style="margin:8px 0 0">Googleタイムラインは日付ごとに確認してから追加します。GPSの記録されていない場所を、勝手に直線で補いません。元ファイルは変更しません。</p>
+    <p class="tiny" style="margin:8px 0 0">Googleタイムラインは日付・移動手段を確認してから追加します。GPS欠落部分に勝手な直線を描きません。元ファイルは変更しません。</p>
   </details>
 
   <p class="notice" id="geo-status" role="status" aria-live="polite">地図上に線を描いてみてください。経路は旅ごとに保存します。</p>
@@ -108,13 +125,14 @@ window.TravelModeMeta=Object.freeze({
   <div class="row between"><h2>会場図と移動経路</h2><span id="zoom-label" class="tiny">100%</span></div>
   <div class="row" style="margin-bottom:10px"><label class="file-picker">＋ 会場図を読み込む<input id="image-file" type="file" accept="image/*"></label><button id="remove-image">画像を外す</button><span id="image-name" class="muted" style="font-size:12px;overflow-wrap:anywhere">会場図なしでも描けます</span></div>
   <div class="tool-row" role="group" aria-label="経路の編集モード">
-    <button id="tool-draw" aria-pressed="true" class="activated">✎ 線を描く</button>
+    <button id="tool-browse" aria-pressed="true" class="activated">↕ スクロール</button>
+    <button id="tool-draw" aria-pressed="false">✎ 線を描く</button>
     <button id="tool-tap" aria-pressed="false">＋ 点を置く</button>
     <button id="tool-pan" aria-pressed="false">✥ 地図を動かす</button>
     <button id="tool-erase" aria-pressed="false">⌫ 線を消す</button>
   </div>
   <div class="transport-control"><label for="venue-transport">次に描く移動手段</label><select id="venue-transport" class="control" aria-label="会場図の新しい経路の移動手段"><option value="walk">徒歩</option><option value="train">電車</option><option value="car">車・タクシー</option><option value="bus">バス</option><option value="bicycle">自転車</option><option value="unknown">不明・その他</option></select></div>
-  <p id="tool-hint" class="hint">1本指で経路を描けます。2本指ならいつでも移動・拡大縮小できます。</p>
+  <div class="edit-hint"><p id="tool-hint" class="hint">閲覧中です。指でページを上下にスクロールできます。描くときは「線を描く」を選んでね。</p><button type="button" id="venue-exit-edit" class="exit-edit" hidden>✓ 編集を終了してスクロール</button></div>
   <div id="editor" class="editor"><canvas id="canvas" aria-label="会場図の上で経路を編集するキャンバス"></canvas><span class="editor-badge" id="canvas-badge">まだ経路はありません</span><span class="editor-footer">2本指で移動・ピンチ</span></div>
   <div class="row between" style="margin-top:10px"><div class="row compact"><button id="zoom-out" aria-label="縮小">−</button><button id="zoom-in" aria-label="拡大">＋</button><button id="zoom-fit">全体表示</button></div><span class="tiny">屋内ではGPSに頼らず手描きできます</span></div>
   <div class="stats"><span>区間 <b id="segment-count">0</b></span><span>地点 <b id="point-count">0</b></span><span>※ 距離は未計測</span></div>
@@ -130,7 +148,7 @@ window.TravelModeMeta=Object.freeze({
   <div class="status" id="status" role="status" aria-live="polite">準備中です…</div>
   <p class="image-note">旅データと画像は、通常はこの端末のブラウザ内に保存します。画像はJSONに埋め込まず別管理し、バックアップ時だけまとめます。Safariのデータを削除すると消える場合があるため、定期的にバックアップを書き出してください。</p>
 </div>
-<div class="blueprint"><b>今できること：</b>実地図・館内図の切り替え、どちらにも移動手段つきのフリーハンド描画、タップ追加、2本指拡大・移動、近い線の自動接続と手動結合、区間分け、線の削除、旅ごとの保存・復元、旧Ver.1.0データの引き継ぎ。<br><b>まだできないこと：</b>画面を閉じた間の自動GPS記録、道路に沿う自動補正。移動手段は現在手動で指定します。実地図の表示にはネット通信を使います。</div>
+<div class="blueprint"><b>今できること：</b>実地図・館内図の切り替え、どちらにも移動手段つきのフリーハンド描画、タップ追加、2本指拡大・移動、近い線の自動接続と手動結合、区間分け、線の削除、旅ごとの保存・復元、旧Ver.1.0データの引き継ぎ。<br><b>まだできないこと：</b>画面を閉じた間の自動GPS記録、道路に沿う自動補正。Googleタイムラインの移動手段は時刻とGoogleの推定から割り当て、取り込み前に修正できます。実地図の表示にはネット通信を使います。</div>
 </main>
 <script>
 (()=>{'use strict';
@@ -143,7 +161,7 @@ const segmentStyle=m=>TRAVEL_MODES[validMode(m)];
 function fillSegmentList(container,segments,onChange){const el=$(container);el.replaceChildren();if(!segments.length){const p=document.createElement('p');p.className='segment-empty';p.textContent='まだ経路がありません';el.append(p);return}segments.slice(0,400).forEach((s,i)=>{const row=document.createElement('div');row.className='segment-row';const sw=document.createElement('span');sw.className='swatch';sw.style.borderColor=segmentStyle(s.mode).color;const lab=document.createElement('label');lab.textContent='区間 '+(i+1)+'（'+s.points.length+'点）';const sel=document.createElement('select');sel.className='control';sel.setAttribute('aria-label','区間 '+(i+1)+'の移動手段');for(const [key,value] of Object.entries(TRAVEL_MODES)){const opt=document.createElement('option');opt.value=key;opt.textContent=value.label;sel.append(opt)}sel.value=validMode(s.mode);sel.addEventListener('change',()=>onChange(s.id,sel.value));row.append(sw,lab,sel);el.append(row)});if(segments.length>400){const p=document.createElement('p');p.className='segment-empty';p.textContent='区間が多いため、先頭400件を表示しています';el.append(p)}}
 let db=null, memoryStore={trips:new Map(),assets:new Map()},persistent=false;
 let current=null,trips=[],assetBlob=null,assetName='',assetImage=null,assetUrl='',activeAssetId=null;
-let mode='draw',zoom=1,pan={x:0,y:0},forcedSeparate=false,saveTimer=0,undoStack=[],redoStack=[];
+let mode='browse',zoom=1,pan={x:0,y:0},forcedSeparate=false,saveTimer=0,undoStack=[],redoStack=[];
 let venueTransport='walk';
 let pendingStroke=null,activePointers=new Map(),gesture=null,dragPan=null,ignoreClick=false;
 const canvas=$('canvas'),ctx=canvas.getContext('2d'),editor=$('editor');let cw=1,ch=1,ratio=1;
@@ -221,7 +239,7 @@ if(pendingStroke?.points.length){const old=current.segments.at(-1),a=old?.points
 $('zoom-label').textContent=Math.round(zoom*100)+'%';}
 function fit(){zoom=1;pan={x:0,y:0};render()}
 function zoomAround(factor,center={x:cw/2,y:ch/2}){const prev=zoom;zoom=qs(zoom*factor,.5,12);const k=zoom/prev;pan.x=center.x-cw/2-(center.x-cw/2-pan.x)*k;pan.y=center.y-ch/2-(center.y-ch/2-pan.y)*k;render()}
-function setMode(next){mode=next;forcedSeparate=forcedSeparate&&next!=='erase';for(const id of ['draw','tap','pan','erase']){$('tool-'+id).classList.toggle('activated',id===next);$('tool-'+id).setAttribute('aria-pressed',String(id===next))}const hints={draw:'1本指で経路を描けます。2本指ならいつでも移動・拡大縮小できます。',tap:'地点を連続タップすると順番につながります。分けるときは「次は別の区間」。',pan:'1本指で地図を移動。2本指でピンチ拡大もできます。',erase:'消したい線をタップすると、その区間を消せます。'};$('tool-hint').textContent=hints[next];editor.style.cursor=next==='pan'?'grab':next==='erase'?'not-allowed':'crosshair';render()}
+function setMode(next){mode=next;forcedSeparate=forcedSeparate&&next!=='erase';for(const id of ['browse','draw','tap','pan','erase']){$('tool-'+id).classList.toggle('activated',id===next);$('tool-'+id).setAttribute('aria-pressed',String(id===next))}const hints={browse:'閲覧中：1本指でページをスクロールできます。経路編集は「線を描く」、地図移動は「地図を動かす」を選んでください。',draw:'1本指で経路を描けます。2本指ならいつでも移動・拡大縮小できます。',tap:'地点を連続タップすると順番につながります。分けるときは「次は別の区間」。',pan:'1本指で地図を移動。2本指でピンチ拡大もできます。',erase:'消したい線をタップすると、その区間を消せます。'};$('tool-hint').textContent=hints[next];editor.style.cursor=next==='browse'?'auto':next==='pan'?'grab':next==='erase'?'not-allowed':'crosshair';editor.style.touchAction=next==='browse'?'pan-y':'none';canvas.style.touchAction=next==='browse'?'pan-y':'none';$('venue-exit-edit').hidden=next==='browse';render()}
 function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
 function distSegment(p,a,b){const dx=b.x-a.x,dy=b.y-a.y,den=dx*dx+dy*dy;if(den<.00001)return dist(p,a);const t=qs(((p.x-a.x)*dx+(p.y-a.y)*dy)/den,0,1);return dist(p,{x:a.x+t*dx,y:a.y+t*dy})}
 function nearestRoute(screen){let best=Infinity,index=-1;current.segments.forEach((s,i)=>{const pts=s.points.map(pointToScreen);for(let j=0;j<pts.length;j++){const d=j===0?dist(screen,pts[j]):distSegment(screen,pts[j-1],pts[j]);if(d<best){best=d;index=i}}});return {index,distance:best}}
@@ -272,7 +290,7 @@ function venueMergeLast(){
  if(gap>VENUE_JOIN_PX&&!confirm('離れた2本を直線でつなぎます。実際に歩いた道と違う可能性があります。結合しますか？'))return;
  snapshot();a.points.push(...b.points.filter((p,i)=>i>0||venueGap(p,a.points.at(-1))>3));ss.pop();forcedSeparate=false;touched();status('直前の2本を1区間につなぎました。');
 }
-function pointerDown(e){if(!current)return;if(e.pointerType==='mouse'&&e.button!==0)return;try{canvas.setPointerCapture(e.pointerId)}catch(_){ }const p=screenPosition(e);activePointers.set(e.pointerId,p);if(activePointers.size>=2){pendingStroke=null;dragPan=null;const pair=[...activePointers.values()].slice(0,2);const m={x:(pair[0].x+pair[1].x)/2,y:(pair[0].y+pair[1].y)/2};gesture={center:m,distance:Math.max(1,dist(pair[0],pair[1])),startZoom:zoom,startPan:{...pan}};ignoreClick=true;render();return}
+function pointerDown(e){if(mode==='browse')return;if(!current)return;if(e.pointerType==='mouse'&&e.button!==0)return;try{canvas.setPointerCapture(e.pointerId)}catch(_){ }const p=screenPosition(e);activePointers.set(e.pointerId,p);if(activePointers.size>=2){pendingStroke=null;dragPan=null;const pair=[...activePointers.values()].slice(0,2);const m={x:(pair[0].x+pair[1].x)/2,y:(pair[0].y+pair[1].y)/2};gesture={center:m,distance:Math.max(1,dist(pair[0],pair[1])),startZoom:zoom,startPan:{...pan}};ignoreClick=true;render();return}
 ignoreClick=false;if(mode==='pan'){dragPan={at:p,initial:{...pan},moved:false};return}if(mode==='draw'){const pt=screenToPoint(p.x,p.y);if(inside(pt))pendingStroke={points:[bounded(pt)],start:p,last:p};render()}}
 function pointerMove(e){if(!activePointers.has(e.pointerId))return;const p=screenPosition(e);activePointers.set(e.pointerId,p);if(activePointers.size>=2){const pair=[...activePointers.values()].slice(0,2),m={x:(pair[0].x+pair[1].x)/2,y:(pair[0].y+pair[1].y)/2};if(!gesture){gesture={center:m,distance:Math.max(1,dist(pair[0],pair[1])),startZoom:zoom,startPan:{...pan}}}const z=qs(gesture.startZoom*(Math.max(1,dist(pair[0],pair[1]))/gesture.distance),.5,12);const k=z/gesture.startZoom;zoom=z;pan.x=gesture.startPan.x+(m.x-gesture.center.x)+(gesture.center.x-cw/2-gesture.startPan.x)*(1-k);pan.y=gesture.startPan.y+(m.y-gesture.center.y)+(gesture.center.y-ch/2-gesture.startPan.y)*(1-k);render();return}
 if(gesture)return;if(dragPan){if(dist(p,dragPan.at)>3)dragPan.moved=true;pan={x:dragPan.initial.x+p.x-dragPan.at.x,y:dragPan.initial.y+p.y-dragPan.at.y};render();return}
@@ -283,7 +301,8 @@ function pointerCancel(e){activePointers.delete(e.pointerId);pendingStroke=null;
 canvas.addEventListener('pointerdown',pointerDown);canvas.addEventListener('pointermove',pointerMove);canvas.addEventListener('pointerup',pointerUp);canvas.addEventListener('pointercancel',pointerCancel);canvas.addEventListener('lostpointercapture',e=>{if(activePointers.has(e.pointerId))pointerCancel(e)});
 canvas.addEventListener('wheel',e=>{e.preventDefault();const at=screenPosition(e);zoomAround(e.deltaY<0?1.15:1/1.15,at)},{passive:false});
 $('zoom-in').onclick=()=>zoomAround(1.3);$('zoom-out').onclick=()=>zoomAround(1/1.3);$('zoom-fit').onclick=fit;
-for(const id of ['draw','tap','pan','erase'])$('tool-'+id).onclick=()=>setMode(id);
+for(const id of ['browse','draw','tap','pan','erase'])$('tool-'+id).onclick=()=>setMode(id);
+$('venue-exit-edit').onclick=()=>setMode('browse');
 $('venue-transport').addEventListener('change',e=>{venueTransport=validMode(e.target.value);setMode(mode);status('次に描く経路：'+segmentStyle(venueTransport).label+'。以前の線は変わりません。')});
 $('new-segment').onclick=()=>{forcedSeparate=true;updateStats();status('次に描く線・点は、新しい区間として記録します。')};
 $('venue-merge-near').onclick=venueMergeNearby;
@@ -327,7 +346,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
 }}
 if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>render()).observe(editor);else window.addEventListener('resize',render);
 window.addEventListener('pagehide',()=>{if(current&&persistent&&saveTimer)saveCurrent(false)});
-window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,setImportedDate:setImportedTripDate,addTrip:async trip=>{await put('trips',trip);trips.unshift(safeTrip(trip));await loadTrip(trip.id)}};setMode('draw');init().catch(e=>status('起動できませんでした：'+e.message,true));
+window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,setImportedDate:setImportedTripDate,addTrip:async trip=>{await put('trips',trip);trips.unshift(safeTrip(trip));await loadTrip(trip.id)}};setMode('browse');init().catch(e=>status('起動できませんでした：'+e.message,true));
 })();
 </script>
 <script>
@@ -352,7 +371,7 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,se
   const tilesEl = $('real-map');
   const tiles = new Map();
   const pointers = new Map();
-  let selected = 'real', mode = 'draw', ready = false;
+  let selected = 'real', mode = 'browse', ready = false;
   let geoTransport = 'walk';
   let center = defaultCenter.slice(), zoom = 16.4;
   let width = 1, height = 1, dpr = 1;
@@ -707,21 +726,25 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,se
   }
   function setMode(next){
     mode=next; pending=null;dragStart=null;pinch=null;pointers.clear();
-    for(const id of ['draw','tap','pan','erase']){
+    for(const id of ['browse','draw','tap','pan','erase']){
       $('geo-'+id).classList.toggle('activated',id===next);
       $('geo-'+id).setAttribute('aria-pressed',String(id===next));
     }
     $('geo-hint').textContent={
+      browse:'閲覧中：1本指でページを上下にスクロールできます。経路を描くときは「線を描く」、地図移動は「地図を動かす」を選んでね。',
       draw:'前の線の終点（オレンジの丸）近くから描くと自動で接続します。離れた線は後から結合できます。',
       tap:'タップした地点を順番に直線でつなぎます。線の近くなら途中に点を挿入します。区間を分けたいときは「次は別の区間」。',
       pan:'1本指で地図を移動、2本指でピンチ拡大できます。',
       erase:'消したい線の近くをタップすると、その区間だけを削除します。'
     }[next];
-    overlay.style.cursor=next==='pan'?'grab':next==='erase'?'not-allowed':'crosshair';
+    overlay.style.cursor=next==='browse'?'auto':next==='pan'?'grab':next==='erase'?'not-allowed':'crosshair';
+    overlay.style.touchAction=next==='browse'?'pan-y':'none';
+    $('geo-exit-edit').hidden=next==='browse';
     paint();
   }
   function position(e){const b=overlay.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top}}
   function pointerDown(e){
+    if(mode==='browse')return;
     if(!trip() || (e.pointerType==='mouse'&&e.button!==0))return;
     e.preventDefault();
     try{overlay.setPointerCapture(e.pointerId)}catch(_){}
@@ -1009,53 +1032,127 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,se
       if(place){const point=parseGoogleCoordinate(place);if(point&&sd===day)visits.push({index:i,point,time:start});}
     }
     const output=[];let count=0,details=0,approx=0,stops=0;
-    const make=(pts,mode,label,key)=>{
+    const timeValue=p=>Number.isFinite(Date.parse(p?.time||''))?Date.parse(p.time):NaN;
+    const timeLabel=p=>{
+      const t=timeValue(p);if(!Number.isFinite(t))return '';
+      const d=new Date(t+timelineOffsetMinutes*60000);
+      return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');
+    };
+    const make=(pts,mode,label,key,reason='')=>{
       if(!pts.length)return;
       count+=pts.length;if(count>IMPORT_MAX_POINTS)throw Error('選択日の地点が65,000点を超えています。');
       if(output.length>=IMPORT_MAX_SEGMENTS)throw Error('選択日の区間が1,500件を超えています。');
       const clean=pts.map(p=>{const v={lng:p.lng,lat:p.lat};if(p.time)v.time=p.time;return v});
-      output.push({id:uid(),mode,source:'import',breakBefore:true,label,originFile:file.name.slice(0,180),importKey:'google:'+model.kind+':'+day+':'+key,points:clean,_order:Number(String(key).split(':')[0])||0,_end:String(key).endsWith(':end')?1:0});
+      const first=timeValue(pts[0]),last=timeValue(pts.at(-1));
+      const when=Number.isFinite(first)?first:NaN;
+      output.push({id:uid(),mode,source:'import',breakBefore:true,label,
+        originFile:file.name.slice(0,180),importKey:'google:'+model.kind+':'+day+':'+key,
+        points:clean,_order:Number(String(key).split(':')[0])||0,_when:when,_reason:reason});
     };
-    const actionMatch=(row,time)=>{
-      const own=row.activity||row.activitySegment;
-      if(own)return timelineMode(own.topCandidate?.type||own.activityType||own.type);
-      const ms=Date.parse(time);
-      if(Number.isNaN(ms))return 'unknown';
-      const a=actions.find(a=>Number.isFinite(a.start)&&Number.isFinite(a.end)&&ms>=a.start-600000&&ms<=a.end+600000);
-      return timelineMode(a?.activity?.topCandidate?.type||a?.activity?.activityType||a?.activity?.type);
+    // A single timelinePath may contain many distinct activities. A prior version
+    // classified the entire path from its FIRST point, turning hours of driving
+    // into walking whenever that first fix fell in a walking activity.
+    const matchingAction=ms=>{
+      if(!Number.isFinite(ms))return null;
+      const available=actions.filter(a=>Number.isFinite(a.start)&&Number.isFinite(a.end)&&ms>=a.start&&ms<=a.end);
+      available.sort((a,b)=>(a.end-a.start)-(b.end-b.start));
+      return available[0]||null;
     };
     const activityCovered=new Set();
     for(const cr of crumbs){
-      const first=cr.pts[0],mode=actionMatch(cr.raw,first.time||getRowTime(cr.raw));
-      const firstDate=Date.parse(first.time||getRowTime(cr.raw));
-      actions.forEach(a=>{if(Number.isFinite(firstDate)&&Number.isFinite(a.start)&&Number.isFinite(a.end)&&firstDate>=a.start-600000&&firstDate<=a.end+600000)activityCovered.add(a.index)});
-      let group=[],part=0;
-      const flush=()=>{if(!group.length)return;make(group,mode,'Googleタイムラインの経路',cr.index+':path:'+part++);details+=group.length;group=[]};
-      for(const p of cr.pts){
-        if(group.length){const prev=group.at(-1),gap=(p.time&&prev.time)?Date.parse(p.time)-Date.parse(prev.time):0;
-          if((gap>90*60000&&segmentMeters(prev,p)>800)||segmentMeters(prev,p)>100000){flush();}
+      let group=[],part=0,groupMode=null,groupReason='';
+      const flush=()=>{
+        if(!group.length)return;
+        const label='Googleタイムライン '+(timeLabel(group[0])&&timeLabel(group.at(-1))?timeLabel(group[0])+'〜'+timeLabel(group.at(-1))+' ':'')+'('+groupReason+')';
+        make(group,groupMode||'unknown',label,cr.index+':path:'+part++,groupReason);
+        details+=group.length;group=[];
+      };
+      // Use observed times for EACH consecutive pair and split on transport changes.
+      // A large gap with no trustworthy data becomes isolated points, NOT a made-up road.
+      const classifyPair=(p,q)=>{
+        const ts=timeValue(p),te=timeValue(q);
+        if(!Number.isFinite(ts)||!Number.isFinite(te)||te<=ts)return {mode:'unknown',reason:'時刻不明'};
+        const duration=(te-ts)/3600000;
+        const meters=segmentMeters(p,q);
+        const speed=meters/1000/duration;
+        const a=matchingAction((ts+te)/2);
+        const googleMode=a?timelineMode(a.activity?.topCandidate?.type||a.activity?.activityType||a.activity?.type):'unknown';
+        if(a)activityCovered.add(a.index);
+        if(googleMode!=='unknown'){
+          // A high-confidence mode from Google wins unless speed contradicts walking.
+          if(googleMode==='walk'&&speed>13&&meters>120)return {mode:'unknown',reason:'徒歩として速すぎるため要確認'};
+          return {mode:googleMode,reason:'Google推定'};
         }
-        group.push(p);
+        // Time-and-distance inference is deliberately conservative: it must not
+        // invent car/train/bus, which often have similar speeds.
+        if(speed<=9&&duration>=1/120&&meters<=1200)return {mode:'walk',reason:'時間・距離から推定'};
+        return {mode:'unknown',reason:speed>22?'高速移動・手段不明':'移動手段不明'};
+      };
+      for(let j=1;j<cr.pts.length;j++){
+        const p=cr.pts[j-1],q=cr.pts[j],a=timeValue(p),b=timeValue(q);
+        const gap=Number.isFinite(a)&&Number.isFinite(b)?(b-a)/60000:Infinity;
+        const meters=segmentMeters(p,q);
+        // Large unobserved intervals should never be drawn as a straight road.
+        if(gap>12&&meters>400 || meters>100000 || !Number.isFinite(gap)||gap<=0){
+          flush();
+          make([p],'unknown','GPS欠落前の地点',cr.index+':gap:'+j+':a','GPS欠落');
+          make([q],'unknown','GPS欠落後の地点',cr.index+':gap:'+j+':b','GPS欠落');
+          approx+=2;continue;
+        }
+        const next=classifyPair(p,q);
+        if(group.length&&next.mode!==groupMode){flush()}
+        if(!group.length){group=[p,q];groupMode=next.mode;groupReason=next.reason}
+        else{group.push(q)}
       }
       flush();
+      if(cr.pts.length===1){make(cr.pts,'unknown','Googleタイムラインの地点',cr.index+':single','地点のみ');details++}
     }
     for(const a of actions){
       if(activityCovered.has(a.index))continue;
       const startPt=parseGoogleCoordinate(a.activity?.start||a.raw?.activitySegment?.startLocation);
       const endPt=parseGoogleCoordinate(a.activity?.end||a.raw?.activitySegment?.endLocation);
       const mode=timelineMode(a.activity?.topCandidate?.type||a.activity?.activityType||a.activity?.type);
-      // No observed track. Preserve endpoints as independent POINTS, never fabricate a straight route.
-      if(startPt&&localDay(getRowTime(a.raw))===day){make([startPt],mode,'移動開始（詳しい経路なし）',a.index+':start');approx++}
-      if(endPt&&localDay(endRowTime(a.raw)||getRowTime(a.raw))===day){make([endPt],mode,'移動終了（詳しい経路なし）',a.index+':end');approx++}
+      // Without observed track, leave endpoint markers independent.
+      if(startPt&&localDay(getRowTime(a.raw))===day){startPt.time=getRowTime(a.raw);make([startPt],mode,'移動開始（詳しい経路なし）',a.index+':start','Google推定・地点のみ');approx++}
+      if(endPt&&localDay(endRowTime(a.raw)||getRowTime(a.raw))===day){endPt.time=endRowTime(a.raw);make([endPt],mode,'移動終了（詳しい経路なし）',a.index+':end','Google推定・地点のみ');approx++}
     }
-    for(const v of visits){
-      make([v.point],'unknown','訪問地点（推定）',v.index+':visit');stops++;
-    }
-    // Restore source chronology: paths, endpoint markers, and visits share the same timeline.
-    output.sort((a,b)=>a._order-b._order||a._end-b._end);
-    output.forEach(o=>{delete o._order;delete o._end});
+    for(const v of visits){v.point.time=v.time;make([v.point],'unknown','訪問地点（推定）',v.index+':visit','訪問地点');stops++}
+    // Sort by observed timestamps, not source array order (Google puts timelinePath
+    // after semantic activities). Preserve deterministic source order as fallback.
+    output.sort((a,b)=>{
+      if(Number.isFinite(a._when)&&Number.isFinite(b._when))return a._when-b._when||a._order-b._order;
+      return a._order-b._order;
+    });
+    output.forEach(o=>{delete o._order;delete o._when});
     if(!output.length)throw Error('この日の位置データは見つかりませんでした。日付を変更するか、Googleマップで記録状況を確認してください。');
     return {segments:output,total:count,originalTotal:count,filename:file.name,day,kind:'timeline',stats:{details,approx,stops},format:model.kind};
+  }
+  function renderModeEditor(){
+    const root=$('timeline-mode-editor'),list=$('timeline-mode-list');
+    const available=pendingImport?.kind==='timeline'?pendingImport.segments.filter(s=>s.points.length>=2):[];
+    root.hidden=!available.length;list.replaceChildren();$('timeline-bulk-mode').value='keep';
+    if(!available.length)return;
+    const clock=p=>p?.time?new Date(p.time).toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Tokyo'}):'時刻不明';
+    for(const [i,seg] of available.entries()){
+      const row=document.createElement('div');row.className='timeline-mode-row';
+      const desc=document.createElement('div');desc.className='timeline-mode-desc';
+      const meters=seg.points.slice(1).reduce((n,p,k)=>n+segmentMeters(seg.points[k],p),0);
+      const name=document.createElement('strong');name.textContent=clock(seg.points[0])+'〜'+clock(seg.points.at(-1))+' ／ 約'+(meters>=1000?(meters/1000).toFixed(1)+'km':Math.round(meters)+'m');
+      const note=document.createElement('small');note.textContent=seg._reason||'推定';desc.append(name,note);
+      const sel=document.createElement('select');sel.setAttribute('aria-label','移動 '+(i+1)+' の移動手段');
+      for(const [value,meta] of Object.entries(window.TravelModeMeta)){
+        const option=document.createElement('option');option.value=value;option.textContent=meta.label;sel.append(option);
+      }
+      sel.value=seg.mode;
+      sel.addEventListener('change',()=>{seg.mode=sel.value;seg._reason='手動指定';note.textContent='手動指定';});
+      row.append(desc,sel);list.append(row);
+    }
+    $('timeline-bulk-mode').onchange=e=>{
+      const mode=e.target.value;
+      if(mode==='keep')return;
+      for(const seg of available){seg.mode=mode;seg._reason='一括手動指定'}
+      renderModeEditor();$('timeline-bulk-mode').value=mode;
+    };
   }
   function renderImportPreview(){
     if(!pendingTimeline)return;
@@ -1067,10 +1164,11 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,se
       $('geo-import-actions').hidden=false;
       $('geo-import-refresh').hidden=!trip()?.geoSegments?.some(s=>String(s.importKey||'').startsWith('google:'+pendingImport.format+':'+pendingImport.day+':'));
       $('geo-import-preview').hidden=false;
-      setStatus('日付と地点数を確認してから取り込んでください。');
+      renderModeEditor();
+      setStatus('日付と移動手段を確認してから取り込んでください。');
     }catch(err){pendingImport=null;$('geo-import-actions').hidden=true;$('geo-import-preview').hidden=false;$('geo-import-preview').textContent=err.message;setStatus(err.message,true)}
   }
-  function importReset(){pendingImport=null;pendingTimeline=null;$('timeline-day-panel').hidden=true;$('geo-import-preview').hidden=true;$('geo-import-actions').hidden=true;$('geo-import-refresh').hidden=true;$('geo-import-file').value=''}
+  function importReset(){pendingImport=null;pendingTimeline=null;$('timeline-mode-editor').hidden=true;$('timeline-mode-list').replaceChildren();$('timeline-day-panel').hidden=true;$('geo-import-preview').hidden=true;$('geo-import-actions').hidden=true;$('geo-import-refresh').hidden=true;$('geo-import-file').value=''}
   $('timeline-refresh').addEventListener('click',renderImportPreview);
   $('timeline-day').addEventListener('change',renderImportPreview);
   $('geo-import-file').addEventListener('change',async e=>{
@@ -1141,7 +1239,8 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,se
   $('geo-import-refresh').addEventListener('click',()=>commitImport(false,true));
   $('tab-real').addEventListener('click',()=>display('real'));
   $('tab-venue').addEventListener('click',()=>display('venue'));
-  for(const id of ['draw','tap','pan','erase'])$('geo-'+id).addEventListener('click',()=>setMode(id));
+  for(const id of ['browse','draw','tap','pan','erase'])$('geo-'+id).addEventListener('click',()=>setMode(id));
+  $('geo-exit-edit').addEventListener('click',()=>setMode('browse'));
   $('geo-zoom-in').addEventListener('click',()=>setZoom(zoom+.65));
   $('geo-zoom-out').addEventListener('click',()=>setZoom(zoom-.65));
   $('geo-center').addEventListener('click',()=>setCenter(...defaultCenter));
@@ -1180,7 +1279,7 @@ window.TravelLogBridge={getTrip:()=>current,changed:saveSoon,save:saveCurrent,se
   else window.addEventListener('resize',redraw);
   window.addEventListener('online',()=>{totalTileFailures=0;totalTileSuccesses=0;redraw()});
   window.TravelLogMap={onTripChanged};
-  setMode('draw');counts();display('real');
+  setMode('browse');counts();display('real');
 })();
 
 </script>
